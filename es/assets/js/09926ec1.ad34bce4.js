@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjac_docs=self.webpackChunkjac_docs||[]).push([[536],{1255:s=>{s.exports=JSON.parse('{"tags":[{"label":"intro","permalink":"/jac-docs/es/blog/tags/intro","description":"Informaci\xf3n introductoria a datos.","count":1}]}')}}]);
