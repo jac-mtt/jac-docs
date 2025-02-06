@@ -1,41 +1,43 @@
-# Website
+# Sitio de Documentación de Datos.Gob de la JAC
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Creado utilizando [Docusaurus](https://docusaurus.io/).
 
-### Installation
+Requisitos y Pasos para modificar la documentación:
+
+### Requisitos
+
+Tener instalado [Node.js](https://nodejs.org/) y [Yarn](https://yarnpkg.com/).
+Actualmente se utiliza la versión 20. Revisar documentación de docusaurus para
+determinar la versión minima requerida de node y yarn.
+
+### Instalación para Desarrollo
+
+Descargar el repositorio:
 
 ```
-$ yarn
+$ gh repo clone jac-mtt/jac-docs
+# o
+$ git clone https://github.com/jac-mtt/jac-docs
 ```
+
+Instalar librerías:
+
+```
+$ npm install
+``` 
 
 ### Local Development
 
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
+Para ejecutar el código en modo de desarrollo:
 
 ```
-$ yarn build
+$ npm run start
 ```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
 ### Deployment
 
-Using SSH:
+Utilizando gh-pages para el hosting:
 
 ```
-$ USE_SSH=true yarn deploy
+$ GIT_USER=jac-mtt yarn deploy
 ```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

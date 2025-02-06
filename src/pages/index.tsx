@@ -22,7 +22,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/category/datos-gob">
-            Ir a Descripción de Datos Abiertos JAC
+            Ir a Descripción de Datos Abiertos
           </Link>
         </div>
         <div className={styles.buttons}>
@@ -43,7 +43,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title="Docs JAC"
-      description="Description will go into a meta tag in <head />">
+      description="Documentación de la Junta de Aeronáutica Civil (JAC)">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

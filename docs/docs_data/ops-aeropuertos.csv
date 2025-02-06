@@ -1,0 +1,5 @@
+nombre_columna,tipo_dato,descripcion
+año,int,Año en que se efectuaron las operaciones.
+mes,int,Mes en que se efectuaron las operaciones.
+aeropuerto_oaci,string,Aeropuerto/Aeródromo OACI donde se informaron las operaciones realizadas.
+n_operaciones,int,Número de operaciones de despegue y aterrizaje informadas en cada uno de los aeropuertos.

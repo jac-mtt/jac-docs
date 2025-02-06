@@ -1,5 +1,6 @@
 ---
-title: Bitácora Aeropuertos
+title: Bitácora de Aeropuertos
+sidebar_position: 1
 ---
 
 import CsvDocTable from '@site/src/components/CsvDocTable';
@@ -7,16 +8,69 @@ import bitacoraCsv from '!!raw-loader!@site/docs/docs_data/bitacora.csv';
 
 # Datos de Bitácora Aeropuertos
 
-La información que se describe a continuación. 
+La Junta de Aeronáutica Civil pone a disposición la serie
+de datos obtenidos de la bitácora de los aeropuertos de Chile,
+correspondientes a los registros de arribo, despegue y
+sobrevuelo que realizan las aeronaves en el país.
 
-## Registros de arribo y despegue
+Estos datos son recolectados por la Dirección General de
+Aeronáutica Civil (DGAC) en las torres de control operadas
+por este organismo.
 
-Aquí se especifican los contenidos de la tabla de bitacora.
+Los datos se encuentran en el sitio de Datos Abiertos de Gobierno
+en el siguiente [enlace](https://datos.gob.cl/dataset/bitacora-aeropuertos).
+Mientras que un reuso de estos datos se puede encontrar en el siguiente
+dashboard de [Operaciones de Naves en Aeropuertos/Aeródromos de Chile](https://app.powerbi.com/view?r=eyJrIjoiMjk4NDY4NDQtYTU1MC00MTNhLTk0MWQtYmY4ODcxMjhhMjhhIiwidCI6IjFhNmRiN2EwLTllZjgtNDQ1NC05MGUzLWMwNmM1Njc1N2FlZCIsImMiOjR9).
 
+:::warning
+No todas las operaciones de aeronaves que se efectuan en
+el país son informadas en las bitácoras entregadas
+por parte de la DGAC, ya que se excluyen aquellos vuelos
+que presenten alguna de las siguientes condiciones:
+  - Son operaciones de aeronaves militares o policiales.
+  - Provienen de aeródromos que no cuenten con administración
+    de la DGAC.
+:::
+
+
+## Actualización de Datos
+
+Los datos de bitácora son actualizados mensualmente,
+aproximadamente los días 10 de cada mes (`t`), con información
+del periodo anterior al de la actualización (`t-1`).
+
+:::info
+Registros del último día de `t-2` están sujetos a cambios, ya
+que es posible que pueden ser corregidos.
+:::
+
+## Descripción de los Datos
+
+A continuación, se describen las columnas contenidas en la
+tabla de bitácora:
 
 <CsvDocTable csvData={bitacoraCsv} />
 
+:::note
+A continuación, algunos conceptos importantes a considerar:
 
-## Serie Consolidado BITACORA DGAC por Aeropuerto
+- `es_internacional`: Una operación se considera internacional cuando
+el origen o destino del vuelo corresponde a un aeropuerto o aeródromo
+ubicado fuera del territorio chileno, mientras que una operación se
+considera doméstica cuando tanto el origen como el destino del vuelo
+corresponden a un aeropuerto o aeródromo ubicado dentro del territorio
+chileno, aún si corresponde a un tramo doméstico de un vuelo internacional.
+- `aeropuerto_dgac_orig_dest`: No todos los aeródromos de Chile cuentan
+con un código OACI, por lo que la DGAC les asigna un código propio.
+- `aerolinea_dgac`: Similar a lo anteriormente, no todas las
+aerolineas de Chile cuentan con un código OACI, por lo que la DGAC
+les asigna un código propio.
+- `dt_operacion`: Adicional al periodo `t-1`, existen registros del primer
+día del mes `t` para facilitar su uso en horario local (`America/Santiago`).
+:::
 
-Serie de tiempo con los datos consolidados de bitacora.
+## Información Técnica del Archivo
+
+Debido a su tamaño, el archivo de bitácora se encuentra en formato
+[`parquet`](https://parquet.apache.org/), comprimido utilizando
+`gzip` (máximo nivel).

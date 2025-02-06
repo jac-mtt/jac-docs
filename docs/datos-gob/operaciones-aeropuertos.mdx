@@ -1,0 +1,47 @@
+---
+title: Operaciones por Aeropuerto
+sidebar_position: 2
+---
+
+import CsvDocTable from '@site/src/components/CsvDocTable';
+import opsAeropuertosCsv from '!!raw-loader!@site/docs/docs_data/ops-aeropuertos.csv';
+import imgOpsAeropuertos from '@site/static/img/operaciones-aeronaves-old.png';
+
+# Datos de Operaciones por Aeropuertos
+
+La serie de datos que se describen a continuación corresponden a un resumen
+de las operaciones informadas en la [bitácora de los aeropuertos de Chile](./bitacora.mdx),
+donde las mismas consideraciones aplican, con la diferencia que se
+excluyen los sobrevuelos (W).
+
+Los datos se encuentran en el sitio de Datos Abiertos de Gobierno
+en el siguiente [enlace](https://datos.gob.cl/dataset/bitacora-aeropuertos).
+
+Esta información reemplaza el antiguo excel de operaciones de aeronaves:
+![imagen](/img/operaciones-aeronaves-old.png)
+
+
+## Actualización de Datos
+
+Al igual que la información de bitácora, este set de datos serán actualizados
+mensualmente, aproximadamente los días 10 de cada mes (`t`), con información
+del periodo anterior al de la actualización (`t-1`).
+
+## Descripción de los Datos
+
+A continuación, se describen las columnas contenidas en la
+tabla de operaciones de aeropuertos:
+
+<CsvDocTable csvData={opsAeropuertosCsv} />
+
+:::warning
+Los años y meses son construidos a partir del campo `dt_operacion` de la bitácora,
+convertidos a la zona horaria de Santiago (America/Santiago).
+:::
+
+## Información Técnica del Archivo
+
+El archivo es en formato `csv`, con codificación `utf-8`, separado por
+comas y con cabecera.
+
+
