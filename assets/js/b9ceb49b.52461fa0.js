@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjac_docs=self.webpackChunkjac_docs||[]).push([[271],{2048:a=>{a.exports=JSON.parse('{"metadata":{"permalink":"/jac-docs/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

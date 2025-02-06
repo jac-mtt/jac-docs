@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://github.com/jac-docs/blog</id>
+    <title>Junta de Aeronáutica Civil Blog</title>
+    <updated>2025-02-04T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://github.com/jac-docs/blog"/>
+    <subtitle>Junta de Aeronáutica Civil Blog</subtitle>
+    <icon>https://github.com/jac-docs/img/gob-icon.svg</icon>
+    <entry>
+        <title type="html"><![CDATA[Introducción]]></title>
+        <id>https://github.com/jac-docs/blog/intro</id>
+        <link href="https://github.com/jac-docs/blog/intro"/>
+        <updated>2025-02-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[En esto sitio web se subirá la información asociada a Datos Gob.]]></summary>
+        <content type="html"><![CDATA[<p>En esto sitio web se subirá la información asociada a Datos Gob.</p>]]></content>
+        <author>
+            <name>Funcionario JAC</name>
+        </author>
+        <category label="intro" term="intro"/>
+    </entry>
+</feed>
