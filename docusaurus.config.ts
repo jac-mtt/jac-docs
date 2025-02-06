@@ -14,16 +14,16 @@ const config: Config = {
   favicon: 'img/gob-icon.svg',
 
   // Set the production url of your site here
-  url: 'https://jac-mtt.github.io',
+  url: 'https://github.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/jac-docs',
+  baseUrl: '/jac-docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'jac-mtt', // Usually your GitHub org/user name.
   projectName: 'jac-docs', // Usually your repo name.
-  deploymentBranch: 'main',
+  deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
