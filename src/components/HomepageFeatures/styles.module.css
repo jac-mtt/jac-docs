@@ -1,0 +1,14 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.centerText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 20vh; /* Adjust as needed */
+}
