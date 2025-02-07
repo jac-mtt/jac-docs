@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjac_docs=self.webpackChunkjac_docs||[]).push([[472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Introducci\xf3n","permalink":"/jac-docs/es/blog/intro","unlisted":false,"date":"2025-02-04T00:00:00.000Z"}]}')}}]);
