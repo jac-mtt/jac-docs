@@ -2,6 +2,9 @@
 title: Dimensiones
 ---
 
+import CsvDocTable from '@site/src/components/CsvDocTable';
+import DimAeropuertoCsv from '!!raw-loader!@site/docs/docs_data/dim_aeropuerto.csv';
+
 # Dimensiones de las Series de Datos
 
 En esta sección se especifican las tablas que se publican
@@ -56,6 +59,9 @@ sujeta a posibles modificaciones.
 
 La dimensión de aeropuertos y aerodromos contiene información...
 Información de Documentos de la DGAC, IFIS y OurAirports.
+
+
+<CsvDocTable csvData={DimAeropuertoCsv} />
 
 
 ## Dim Aerolineas

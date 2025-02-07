@@ -1,6 +1,7 @@
 # Sitio de Documentación de Datos.Gob de la JAC
 
 Creado utilizando [Docusaurus](https://docusaurus.io/).
+Enlace a la documentación en [GitHub Pages](https://jac-mtt.github.io/jac-docs/).
 
 Requisitos y Pasos para modificar la documentación:
 
