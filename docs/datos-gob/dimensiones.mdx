@@ -9,15 +9,59 @@ en Datos.Gob relacionadas con las dimensiones de los datos
 que se encargan de contextualizar o describir en mayor
 detalle, columnas de las demás series de datos.
 
+A continuación, el diagrama muestra las relaciones entre
+estas dimensiones y las tablas de series:
 
-## Dim. Aeropuertos OACI
+```mermaid
+erDiagram
+    dim_aeropuerto {
+        string oaci
+    }
+    
+    dim_aerolinea {
+        string oaci
+    }
+
+    dim_actividad {
+        string codigo
+    }
+    
+    bitacora {
+        string aeropuerto_oaci FK
+        string aeropuerto_dgac_orig_dest FK
+        string aerolinea_dgac FK
+        string cod_actividad FK
+    }
+
+    operaciones_aeropuerto {
+        string aeropuerto_oaci FK
+    }
+    
+    dim_aeropuerto ||--o{ bitacora : "aeropuerto_dgac_orig_dest"
+    dim_aeropuerto ||--|{ bitacora : "aeropuerto_oaci"
+    dim_aerolinea ||--o{ bitacora : "aerolinea_dgac"
+    dim_actividad ||--|{ bitacora : "cod_actividad"
+    dim_aeropuerto ||--|{ operaciones_aeropuerto : "aeropuerto_oaci"
+
+```
+Se omiten el resto de las columnas de las tablas para simplificar el diagrama.
+
+:::warning
+La información que se presenta dentro de las dimensiones está
+sujeta a posibles modificaciones.
+:::
+
+
+## Dim Aeropuertos
 
 La dimensión de aeropuertos y aerodromos contiene información...
+Información de Documentos de la DGAC, IFIS y OurAirports.
 
-## Dim. Aerolineas OACI
+
+## Dim Aerolineas
 
 Dimension con la descripción de las aerolineas que operan en Chile...
 
-## Dim. Actividades DGAC
+## Dim Actividades DGAC
 
 Las actividades de la DGAC...

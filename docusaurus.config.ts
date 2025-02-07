@@ -36,6 +36,10 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en', 'es'],
   },
+  markdown: {
+    mermaid: true
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
     [
@@ -76,6 +80,11 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/avatar_gobcl.png',
+    "markdown":{
+      mermaid: {
+        theme: {light: 'neutral', dark: 'forest'},
+      }
+    },
     navbar: {
       title: 'JAC',
       logo: {
