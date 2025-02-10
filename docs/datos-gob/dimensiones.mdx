@@ -4,6 +4,8 @@ title: Dimensiones
 
 import CsvDocTable from '@site/src/components/CsvDocTable';
 import DimAeropuertoCsv from '!!raw-loader!@site/docs/docs_data/dim_aeropuerto.csv';
+import DimAerolineaCsv from '!!raw-loader!@site/docs/docs_data/dim_aerolinea.csv';
+import DimActividadCsv from '!!raw-loader!@site/docs/docs_data/dim_actividad.csv';
 
 # Dimensiones de las Series de Datos
 
@@ -54,20 +56,35 @@ La información que se presenta dentro de las dimensiones está
 sujeta a posibles modificaciones.
 :::
 
+:::info
+Los tipos de dato que presenten un signo de pregunta (`?`) al final
+de su descripción, indica que la columna contiene valores nulos.
+:::
+
 
 ## Dim Aeropuertos
 
-La dimensión de aeropuertos y aerodromos contiene información...
-Información de Documentos de la DGAC, IFIS y OurAirports.
+La dimensión de aeropuertos y aerodromos contiene información
+identificativa, normativa y geográfica de estos. La fuente de datos
+proviene de la [DGAC](https://www.dgac.gob.cl/),
+[IFIS](https://aipchile.dgac.gob.cl/),
+[DAP](https://www.mop.gob.cl/category/direccion-de-aeropuertos/)
+y [OurAirports](https://ourairports.com/).
 
 
 <CsvDocTable csvData={DimAeropuertoCsv} />
+:::info
+Los tipos de dato que presenten un signo de pregunta (`?`) al final
+de su descripción, indica que la columna contiene valores nulos.
+:::
 
 
 ## Dim Aerolineas
 
 Dimension con la descripción de las aerolineas que operan en Chile...
+<CsvDocTable csvData={DimAerolineaCsv} />
 
 ## Dim Actividades DGAC
 
 Las actividades de la DGAC...
+<CsvDocTable csvData={DimActividadCsv} />

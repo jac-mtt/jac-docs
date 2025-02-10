@@ -1,0 +1,6 @@
+nombre_columna,tipo_dato,descripcion
+oaci,string,Código OACI/ICAO (3 letras) de la aerolinea.
+iata,string?,Código IATA (2 letras) de la aerolinea. No todas tienen este código.
+nombre,string,Nombre completo de la aerolinea.
+es_aerolinea_carga,bool,Verdadero si la aerolinea es exclusiva de carga.
+pais_iso,string,País de la aerolinea en formato ISO 3166.

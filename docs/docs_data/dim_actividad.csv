@@ -1,0 +1,4 @@
+nombre_columna,tipo_dato,descripcion
+codigo,string,Letra o número generado por la DGAC para asignar el tipo de una actividad.
+descripcion,string,Descripción de la actividad.
+tipo,string,El tipo de aviación de la actividad.
