@@ -6,13 +6,15 @@ import CsvDocTable from '@site/src/components/CsvDocTable';
 import DimAeropuertoCsv from '!!raw-loader!@site/docs/docs_data/dim_aeropuerto.csv';
 import DimAerolineaCsv from '!!raw-loader!@site/docs/docs_data/dim_aerolinea.csv';
 import DimActividadCsv from '!!raw-loader!@site/docs/docs_data/dim_actividad.csv';
+import ImgImportCsvExcel from '@site/static/img/excel-import-csv.png';
 
 # Dimensiones de las Series de Datos
 
 En esta sección se especifican las tablas que se publican
-en Datos.Gob relacionadas con las dimensiones de los datos
-que se encargan de contextualizar o describir en mayor
-detalle, columnas de las demás series de datos.
+en [Datos.Gob](https://datos.gob.cl/dataset/dimensiones-aeronauticas)
+relacionadas con las dimensiones de los datos que se encargan de
+contextualizar o describir en mayor detalle, columnas de las demás
+series de datos.
 
 A continuación, el diagrama ([ER](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model#Cardinalities))
 muestra las relaciones entre estas dimensiones y las tablas de series:
@@ -65,7 +67,7 @@ o vacíos.
 
 ## Dim Aeropuertos
 
-La dimensión de aeropuertos y aerodromos contiene información
+La dimensión de aeropuertos y aeródromos contiene información
 identificativa, normativa y geográfica de estos. La fuente de datos
 proviene de la [DGAC](https://www.dgac.gob.cl/),
 [IFIS](https://aipchile.dgac.gob.cl/),
@@ -92,3 +94,15 @@ en la bitácora de operaciones de la DGAC.
 
 Todos los archivos son cargados en formato `csv`, con codificación
 `utf-8`, separado por comas y con cabecera.
+
+Si no se visualizan correctamente los datos con caracteres
+especiales en Excel, se recomienda abrir el archivo csv
+mediante la opción "De texto/CSV" en la pestaña "Datos" de Excel:  
+
+<figure style={{ textAlign:"center" }}>
+  <img src={ImgImportCsvExcel} alt="Importar CSV en Excel" />
+</figure>
+
+Esto ocurre debido a que Excel no lee por defecto la codificación `utf-8` de los
+archivos `csv`.
+[Fuente](https://superuser.com/questions/280603/how-to-set-character-encoding-when-opening-a-csv-file-in-excel).

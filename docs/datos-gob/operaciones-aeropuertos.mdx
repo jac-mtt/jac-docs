@@ -6,6 +6,7 @@ sidebar_position: 2
 import CsvDocTable from '@site/src/components/CsvDocTable';
 import opsAeropuertosCsv from '!!raw-loader!@site/docs/docs_data/ops-aeropuertos.csv';
 import imgOpsAeropuertos from '@site/static/img/operaciones-aeronaves-old.png';
+import ImgImportCsvExcel from '@site/static/img/excel-import-csv.png';
 
 # Datos de Operaciones por Aeropuertos
 
@@ -44,4 +45,14 @@ convertidos a la zona horaria de Santiago (America/Santiago).
 El archivo es en formato `csv`, con codificación `utf-8`, separado por
 comas y con cabecera.
 
+Si no se visualizan correctamente los datos con caracteres
+especiales en Excel, se recomienda abrir el archivo csv
+mediante la opción "De texto/CSV" en la pestaña "Datos" de Excel:  
 
+<figure style={{ textAlign:"center" }}>
+  <img src={ImgImportCsvExcel} alt="Importar CSV en Excel" />
+</figure>
+
+Esto ocurre debido a que Excel no lee por defecto la codificación `utf-8` de los
+archivos `csv`.
+[Fuente](https://superuser.com/questions/280603/how-to-set-character-encoding-when-opening-a-csv-file-in-excel).

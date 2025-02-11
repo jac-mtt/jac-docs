@@ -37,3 +37,18 @@ span.email b {
 span.email i {
   display: none;
 }
+
+/* Css for centered image
+  
+.centered-image {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.centered-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+*/
