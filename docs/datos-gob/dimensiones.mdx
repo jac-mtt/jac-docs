@@ -49,7 +49,7 @@ erDiagram
     dim_aeropuerto ||--|{ operaciones_aeropuerto : "aeropuerto_oaci"
 
 ```
-Se omiten el resto de las columnas de las tablas para simplificar el diagrama.
+Se omite el resto de las columnas de las tablas para simplificar el diagrama.
 
 :::warning
 La información que se presenta dentro de las dimensiones está
@@ -58,7 +58,8 @@ sujeta a posibles modificaciones.
 
 :::info
 Los tipos de dato que presenten un signo de pregunta (`?`) al final
-de su descripción, indica que la columna contiene valores nulos.
+de su descripción, indica que la columna contiene valores nulos
+o vacíos.
 :::
 
 
@@ -71,20 +72,23 @@ proviene de la [DGAC](https://www.dgac.gob.cl/),
 [DAP](https://www.mop.gob.cl/category/direccion-de-aeropuertos/)
 y [OurAirports](https://ourairports.com/).
 
-
 <CsvDocTable csvData={DimAeropuertoCsv} />
-:::info
-Los tipos de dato que presenten un signo de pregunta (`?`) al final
-de su descripción, indica que la columna contiene valores nulos.
-:::
 
 
 ## Dim Aerolineas
 
-Dimension con la descripción de las aerolineas que operan en Chile...
+Contiene la descripción de las aerolineas que operan
+(u operaron en algún momento) en Chile.
 <CsvDocTable csvData={DimAerolineaCsv} />
 
 ## Dim Actividades DGAC
 
-Las actividades de la DGAC...
+Presenta las actividades de la DGAC que describen
+el motivo de la operación de una aeronave. Esto, registrado
+en la bitácora de operaciones de la DGAC.
 <CsvDocTable csvData={DimActividadCsv} />
+
+## Información Técnica de los Archivos
+
+Todos los archivos son cargados en formato `csv`, con codificación
+`utf-8`, separado por comas y con cabecera.

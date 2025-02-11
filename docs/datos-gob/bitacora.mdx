@@ -8,8 +8,8 @@ import bitacoraCsv from '!!raw-loader!@site/docs/docs_data/bitacora.csv';
 
 # Datos de Bitácora Aeropuertos
 
-La Junta de Aeronáutica Civil pone a disposición la serie
-de datos obtenidos de la bitácora de los aeropuertos de Chile,
+La Junta de Aeronáutica Civil carga a [Datos.Gob](https://datos.gob.cl/)
+la serie de datos obtenidos de la bitácora de los aeropuertos de Chile,
 correspondientes a los registros de arribo, despegue y
 sobrevuelo que realizan las aeronaves en el país.
 
@@ -28,8 +28,8 @@ el país son informadas en las bitácoras entregadas
 por parte de la DGAC, ya que se excluyen aquellos vuelos
 que presenten alguna de las siguientes condiciones:
   - Son operaciones de aeronaves militares o policiales.
-  - Provienen de aeródromos que no cuenten con administración
-    de la DGAC.
+  - Provienen de aeródromos que no cuenten con la
+    administración de la DGAC.
 :::
 
 
@@ -41,7 +41,7 @@ del periodo anterior al de la actualización (`t-1`).
 
 :::info
 Registros del último día de `t-2` están sujetos a cambios, ya
-que es posible que pueden ser corregidos.
+que es posible que puedan ser corregidos.
 :::
 
 ## Descripción de los Datos
@@ -52,7 +52,7 @@ tabla de bitácora:
 <CsvDocTable csvData={bitacoraCsv} />
 :::info
 Los tipos de dato que presenten un signo de pregunta (`?`) al final
-de su descripción, indica que la columna contiene valores nulos.
+de su descripción, indica que la columna contiene valores nulos o vacíos.
 :::
 
 
@@ -69,9 +69,10 @@ chileno, aún si corresponde a un tramo doméstico de un vuelo internacional.
 con un código OACI, por lo que la DGAC les asigna un código propio.
 - `aerolinea_dgac`: Similar a lo anteriormente, no todas las
 aerolineas de Chile cuentan con un código OACI, por lo que la DGAC
-les asigna un código propio.
+les asigna un código interno.
 - `dt_operacion`: Adicional al periodo `t-1`, existen registros del primer
-día del mes `t` para facilitar su uso en horario local (`America/Santiago`).
+día del mes `t` para facilitar el uso de la serie en horario local
+(`America/Santiago`).
 :::
 
 ## Información Técnica del Archivo
