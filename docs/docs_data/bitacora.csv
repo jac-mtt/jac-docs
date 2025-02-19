@@ -6,11 +6,11 @@ tipo_operacion,string,"Condición de la Operación: Aterrizaje (A), despegue (D)
 aeropuerto_dgac_orig_dest,string,Código OACI o DGAC correspondiente al aeropuerto de origen o destino.
 aerolinea_dgac,string,Código OACI o DGAC de la aerolinea.
 numero_vuelo,string?,Número que la aerolinea le asigna a su vuelo.
-cod_actividad,string,"Código de la actividad, definida por DGAC, donde se detalla el motivo del vuelo."
+actividad_cod,string,"Código de la actividad, definida por DGAC, donde se detalla el motivo del vuelo."
 matricula,string,Matrícula de la aeronave.
 dt_prkg,datetime,"Fecha y hora (en UTC) del hito de ""parking"" efectuado por la aeronave."
-tipo_avion,string?,Tipo o modelo del avión.
-tipo_avion_desc,string?,Descripción detallada del modelo del avión.
+modelo_avion,string?,Tipo o modelo del avión.
+modelo_avion_desc,string?,Descripción detallada del modelo del avión.
 es_internacional,bool,Si el campo `aeropuerto_dgac_orig_dest` corresponde a un aeropuerto internacional (true) o no (false).
 regular_no_regular,string,"El vuelo es de tipo regular (R), es decir que se realiza con frecuencia, o no (N)."
 pmd,numeric?,"Peso máximo de despegue, determinado por el tipo de avión. Número decimal."

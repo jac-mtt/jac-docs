@@ -1,23 +1,22 @@
 ---
-title: Bitácora de Aeropuertos
+title: Operaciones Aeroportuarias
 sidebar_position: 1
 ---
 
 import CsvDocTable from '@site/src/components/CsvDocTable';
 import bitacoraCsv from '!!raw-loader!@site/docs/docs_data/bitacora.csv';
 
-# Datos de Bitácora Aeropuertos
+# Datos de Operaciones Aeroportuarias
 
-La Junta de Aeronáutica Civil carga a [Datos.Gob](https://datos.gob.cl/)
-la serie de datos obtenidos de la bitácora de los aeropuertos de Chile,
+La Junta de Aeronáutica Civil carga en [Datos.Gob](https://datos.gob.cl/)
+la serie de datos obtenidos de las bitácoras de los aeropuertos de Chile,
 correspondientes a los registros de arribo, despegue y
 sobrevuelo que realizan las aeronaves en el país.
 
 Estos datos son recolectados por la Dirección General de
-Aeronáutica Civil (DGAC) en las torres de control operadas
-por este organismo.
+Aeronáutica Civil (DGAC) mediante los formularios de bitácoras de vuelo.
 
-Los datos se encuentran en el sitio de Datos Abiertos de Gobierno
+Los datos se encuentran en el sitio de Datos.Gob
 en el siguiente [enlace](https://datos.gob.cl/dataset/bitacora-aeropuertos).
 Mientras que un reuso de estos datos se puede encontrar en el siguiente
 dashboard de [Operaciones de Naves en Aeropuertos/Aeródromos de Chile](https://app.powerbi.com/view?r=eyJrIjoiMjk4NDY4NDQtYTU1MC00MTNhLTk0MWQtYmY4ODcxMjhhMjhhIiwidCI6IjFhNmRiN2EwLTllZjgtNDQ1NC05MGUzLWMwNmM1Njc1N2FlZCIsImMiOjR9).
@@ -79,4 +78,4 @@ día del mes `t` para facilitar el uso de la serie en horario local
 
 Debido a su tamaño, el archivo de bitácora se encuentra en formato
 [`parquet`](https://parquet.apache.org/), comprimido utilizando
-`gzip` (máximo nivel).
+`zstd` (máximo nivel).
