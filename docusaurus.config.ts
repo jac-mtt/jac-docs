@@ -114,7 +114,7 @@ const config: Config = {
           items: [
             {
               label: 'Datos Gob',
-              to: '/docs/category/datos-gob',
+              to: '/docs/category/series-de-datos',
             },
           ],
         },
