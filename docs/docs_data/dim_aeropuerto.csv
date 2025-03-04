@@ -1,6 +1,6 @@
 nombre_columna,tipo_dato,descripcion
 oaci,string,Código OACI/ICAO (4 letras) del aeropuerto/aeródromo.
-iata,string?,Código IATA (3 letras) del aeropuerto/aeródromo. No todos los aerodromos están inscritos en IATA.
+iata,string?,Código IATA (3 letras) del aeropuerto/aeródromo. No todos los aeródromos están inscritos en IATA.
 nombre,string,"Nombre del aeropuerto. Especifica si es aeropuerto internacional, aeródromo, base militar, entre otros."
 nombre_corto,string,Nombre acortado sin especificar tamaño del aeropuerto.
 ciudad,string,Localidad donde se encuentra el aeropuerto.

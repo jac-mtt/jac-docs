@@ -21,7 +21,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/category/datos-gob">
+            to="/docs/category/series-de-datos">
             Ir a Descripción de Datos Abiertos
           </Link>
         </div>

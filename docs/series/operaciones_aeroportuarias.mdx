@@ -1,0 +1,129 @@
+---
+title: Operaciones Aeroportuarias
+sidebar_position: 1
+---
+
+import CsvDocTable from '@site/src/components/CsvDocTable';
+import bitacoraCsv from '!!raw-loader!@site/docs/docs_data/bitacora.csv';
+import opsAeropuertosCsv from '!!raw-loader!@site/docs/docs_data/ops-aeropuertos.csv';
+import imgOpsAeropuertos from '@site/static/img/operaciones-aeronaves-old.png';
+import ImgImportCsvExcel from '@site/static/img/excel-import-csv.png';
+
+# Series de Operaciones Aeroportuarias
+
+La **Junta de Aeronáutica Civil** carga en la plataforma [Datos.Gob](https://datos.gob.cl/)
+dos series de datos obtenidas a partir de las bitácoras de los aeropuertos de Chile. La
+primera corresponde a un subconjunto de la bitácora de aeropuertos, mientras que la segunda
+corresponde a un resumen de las operaciones de aeronaves en los aeropuertos del país.
+
+A continuación, se describen en detalle las variables contenidas en cada una de estas
+series de datos, su oportunidad e información técnica relacionada con el formato de los datos. 
+
+## Bitácora de Aeropuertos
+
+Estos datos son recolectados por la Dirección General de
+Aeronáutica Civil (DGAC) mediante los formularios de bitácoras de vuelo
+y corresponden a los registros de arribo, despegue y
+sobrevuelo que realizan las aeronaves en territorio nacional.
+
+Los datos se encuentran en el sitio de Datos.Gob
+en el siguiente [enlace](https://datos.gob.cl/dataset/bitacora-aeropuertos).
+Mientras que un reuso de estos datos se puede encontrar en el siguiente
+dashboard de [Operaciones de Aeronaves en Aeropuertos/Aeródromos de Chile](https://app.powerbi.com/view?r=eyJrIjoiMjk4NDY4NDQtYTU1MC00MTNhLTk0MWQtYmY4ODcxMjhhMjhhIiwidCI6IjFhNmRiN2EwLTllZjgtNDQ1NC05MGUzLWMwNmM1Njc1N2FlZCIsImMiOjR9).
+
+:::warning
+No todas las operaciones de aeronaves que se efectuan en
+el país son informadas en las bitácoras entregadas
+por parte de la DGAC, ya que se excluyen aquellos vuelos
+que presenten alguna de las siguientes condiciones:
+  - Son operaciones de aeronaves militares o policiales.
+  - Provienen de aeródromos que no cuenten con la
+    administración de la DGAC.
+:::
+
+### Descripción de los Datos
+
+En la siguiente tabla, se describen las columnas contenidas en la
+tabla de bitácora:
+
+<CsvDocTable csvData={bitacoraCsv} />
+:::info
+Los tipos de dato que presenten un signo de pregunta (`?`) al final
+de su descripción, indica que la columna contiene valores nulos o vacíos.
+:::
+
+
+:::note
+A continuación, algunos conceptos importantes a considerar:
+
+- `es_internacional`: Una operación se considera internacional cuando
+el origen o destino del vuelo corresponde a un aeropuerto o aeródromo
+ubicado fuera del territorio chileno, mientras que una operación se
+considera doméstica cuando tanto el origen como el destino del vuelo
+corresponden a un aeropuerto o aeródromo ubicado dentro del territorio
+chileno, aún si corresponde a un tramo doméstico de un vuelo internacional.
+- `aeropuerto_dgac_orig_dest`: No todos los aeródromos de Chile cuentan
+con un código OACI, por lo que la DGAC les asigna un código propio.
+- `aerolinea_dgac`: Similar a lo anteriormente, no todas las
+aerolineas de Chile cuentan con un código OACI, por lo que la DGAC
+les asigna un código interno.
+- `dt_operacion`: Adicional al periodo `t-1`, existen registros del primer
+día del mes `t` para facilitar el uso de la serie en horario local
+(`America/Santiago`).
+:::
+
+
+
+## Operaciones por Aeropuertos
+
+La serie de datos que se describen a continuación corresponden a un resumen
+de las operaciones informadas en la [bitácora de los aeropuertos de Chile](#bitácora-de-aeropuertos),
+donde las mismas consideraciones aplican, con la diferencia que se
+excluyen los sobrevuelos (W).
+
+Los datos se encuentran en el sitio de Datos Abiertos de Gobierno
+en el siguiente [enlace](https://datos.gob.cl/dataset/bitacora-aeropuertos).
+
+### Descripción de los Datos
+
+A continuación, se describen las columnas contenidas en la
+tabla de operaciones de aeropuertos:
+
+<CsvDocTable csvData={opsAeropuertosCsv} />
+
+:::warning
+Los años y meses son construidos a partir del campo `dt_operacion` de la bitácora,
+convertidos a la zona horaria correspondiente (America/Punta_Arenas por ejemplo).
+:::
+
+## Actualización de Datos
+
+Los datos de bitácora son actualizados mensualmente,
+aproximadamente los días 10 de cada mes (`t`), con información
+del periodo anterior al de la actualización (`t-1`).
+
+:::info
+Registros del último día de `t-2` están sujetos a cambios, ya
+que es posible que puedan ser corregidos.
+:::
+
+## Información Técnica de los Archivos
+
+Debido a su tamaño, el archivo de bitácora se encuentra en formato
+[`parquet`](https://parquet.apache.org/), comprimido utilizando
+`zstd` (máximo nivel).
+
+El archivo de operaciones por aeropuerto se encuentra en formato
+`csv`, con codificación `utf-8`, separado por comas y con cabecera.
+
+Si no se visualizan correctamente los datos con caracteres
+especiales en Excel, se recomienda abrir el archivo csv
+mediante la opción "De texto/CSV" en la pestaña "Datos" de Excel:  
+
+<figure style={{ textAlign:"center" }}>
+  <img src={ImgImportCsvExcel} alt="Importar CSV en Excel" />
+</figure>
+
+Esto ocurre debido a que Excel no lee por defecto la codificación `utf-8` de los
+archivos `csv`.
+[Fuente](https://superuser.com/questions/280603/how-to-set-character-encoding-when-opening-a-csv-file-in-excel).

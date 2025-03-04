@@ -2,7 +2,7 @@ nombre_columna,tipo_dato,descripcion
 dt_operacion,datetime,Fecha y hora (en UTC) de la operación realizada por una nave en aeropuerto chileno.
 aeropuerto_oaci,string,"Indicador OACI (ICAO en inglés) correspondiente al aeropuerto/aeródromo informante 
 que debe ser notificado por personal aeronáutico de la unidad."
-tipo_operacion,string,"Condición de la Operación: Aterrizaje (A), despegue (D) y sobrevuelo (W)."
+tipo_operacion,string,"Condición de la operación: aterrizaje (A), despegue (D) o sobrevuelo (W)."
 aeropuerto_dgac_orig_dest,string,Código OACI o DGAC correspondiente al aeropuerto de origen o destino.
 aerolinea_dgac,string,Código OACI o DGAC de la aerolinea.
 numero_vuelo,string?,Número que la aerolinea le asigna a su vuelo.
