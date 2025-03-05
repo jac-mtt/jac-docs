@@ -2,15 +2,13 @@ nombre_columna,tipo_dato,descripcion
 dt_operacion,datetime,Fecha y hora (en UTC) de la operación realizada por una nave en aeropuerto chileno.
 aeropuerto_oaci,string,"Indicador OACI (ICAO en inglés) correspondiente al aeropuerto/aeródromo informante 
 que debe ser notificado por personal aeronáutico de la unidad."
-tipo_operacion,string,"Condición de la operación: aterrizaje (A), despegue (D) o sobrevuelo (W)."
-aeropuerto_dgac_orig_dest,string,Código OACI o DGAC correspondiente al aeropuerto de origen o destino.
+tipo_operacion,string,"Tipo de la operación: aterrizaje (A), despegue (D) o sobrevuelo (W)."
+aeropuerto_dgac_orig_dest,string,"Código OACI o DGAC correspondiente al aeropuerto de origen o destino. Si la operación es un aterrizaje (A) este campo corresponde al aeropuerto de origen, mientras que si es un registro de despegue (D), entonces el dato corresponde al aeropuerto de destino del vuelo."
 aerolinea_dgac,string,Código OACI o DGAC de la aerolinea.
 numero_vuelo,string?,Número que la aerolinea le asigna a su vuelo.
 actividad_cod,string,"Código de la actividad, definida por DGAC, donde se detalla el motivo del vuelo."
 matricula,string,Matrícula de la aeronave.
-dt_prkg,datetime,"Fecha y hora (en UTC) del hito de ""parking"" efectuado por la aeronave."
 modelo_avion,string?,Tipo o modelo del avión.
 modelo_avion_desc,string?,Descripción detallada del modelo del avión.
 es_internacional,bool,Si el campo `aeropuerto_dgac_orig_dest` corresponde a un aeropuerto internacional (true) o no (false).
-regular_no_regular,string,"El vuelo es de tipo regular (R), es decir que se realiza con frecuencia, o no (N)."
 pmd,numeric?,"Peso máximo de despegue, determinado por el tipo de avión. Número decimal."
