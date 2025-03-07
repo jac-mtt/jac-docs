@@ -2,5 +2,5 @@ nombre_columna,tipo_dato,descripcion
 periodo,int,Año en que se efectuaron las operaciones.
 mes,int,Mes en que se efectuaron las operaciones.
 aeropuerto_oaci,string,Aeropuerto/Aeródromo OACI donde se informaron las operaciones realizadas.
-internacional_nacional,string,"Operaciones corresponden a vuelos internacionales (I) o nacionales (N), de acuerdo con el campo `es_internacional` de la bitácora de aeropuertos."
+internacional_domestico,string,"Operaciones corresponden a vuelos internacionales (I) o domésticos (D), de acuerdo con el campo `es_internacional` de la bitácora de aeropuertos."
 n_operaciones,int,Número de operaciones de despegue y aterrizaje informadas en cada uno de los aeropuertos.

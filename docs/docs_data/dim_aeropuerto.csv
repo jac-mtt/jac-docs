@@ -7,5 +7,5 @@ ciudad,string,Localidad donde se encuentra el aeropuerto.
 region_iso,string,"Región del aeropuerto en formato ISO-3166-2 (por ejemplo, `CL-MA` corresponde a Magallanes y la Antártica Chilena)."
 latitud,numeric,Latitud en formato decimal.
 longitud,numeric,Longitud en formato decimal.
+categoria_dgac,string?,"Tipo de Red para aeropuertos/aeródromos de Chile: Primera (P), Segunda (S), Tercera (T), Militares (M) y Helipuerto (H)."
 zona_horaria,string,En formato tzdata/IANA (America/Punta_Arenas).
-categoria,string?,"Tipo de Red para aeropuertos/aeródromos de Chile: Primera (P), Segunda (S), Tercera (T), Militares (M) y Helipuerto (H)."
