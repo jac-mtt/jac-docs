@@ -29,7 +29,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="https://datos.gob.cl/organization/junta_de_aeronautica_civil">
-            Ir a Datos Gob
+            Ir a Datos.Gob
           </Link>
         </div>
       </div>

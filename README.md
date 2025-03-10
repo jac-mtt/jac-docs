@@ -37,7 +37,10 @@ $ npm run start
 
 ### Deployment
 
-Utilizando gh-pages para el hosting:
+Basta con hacer un `git push` a branch `main` para que se actualice la
+documentación mediante GitHub Actions.
+
+La forma antigua utilizando gh-pages para el hosting:
 
 ```
 $ GIT_USER=jac-mtt yarn deploy
