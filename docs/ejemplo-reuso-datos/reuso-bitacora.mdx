@@ -59,6 +59,7 @@ copiar el enlace:
 A continuación, se presentan ejemplos de cómo reutilizar los datos de la bitácora de operaciones
 en diversos lenguajes de programación o aplicaciones de inteligencia de negocios.
 
+Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
 
 <Tabs>
 
@@ -273,6 +274,24 @@ en diversos lenguajes de programación o aplicaciones de inteligencia de negocio
     ORDER BY
         bd.dt_operacion
     LIMIT 10
+    ;
+    ```
+    
+    Finalmente, es posible contar las operaciones por aeropuerto:
+
+    ```sql
+    SELECT
+        bd.aeropuerto_oaci
+        ,dp.nombre_corto   AS aeropuerto_desc
+        ,COUNT(*)          AS n_operaciones
+    FROM
+        main.bitacora_dgac            bd
+        JOIN main.dim_actividad       da   ON da.codigo = bd.actividad_cod
+        LEFT JOIN main.dim_aeropuerto dp   ON dp.oaci   = bd.aeropuerto_oaci
+        LEFT JOIN main.dim_aerolinea  dl   ON dl.oaci   = bd.aerolinea_dgac
+        LEFT JOIN main.dim_aeropuerto dpod ON dpod.oaci = bd.aeropuerto_dgac_orig_dest
+    GROUP BY ALL
+    ORDER BY n_operaciones DESC
     ;
     ```
 
