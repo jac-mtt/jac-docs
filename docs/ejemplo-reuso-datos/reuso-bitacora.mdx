@@ -1,0 +1,320 @@
+---
+title: Reuso de Bitácora y Dimensiones Aeronáuticas
+sidebar_position: 2
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import imgReusoBitacora from '@site/static/img/docs/reuso/reuso-parquet-01.png';
+import imgReusoBitUrl from '@site/static/img/docs/reuso/reuso-parquet-02.png';
+
+import imgReusoBitPbiBanner from '@site/static/img/docs/reuso/reuso-parquet-pbi-01.png';
+import imgReusoBitPbiOpciones from '@site/static/img/docs/reuso/reuso-parquet-pbi-02.png';
+import imgReusoBitPbiIngresoUrl from '@site/static/img/docs/reuso/reuso-parquet-pbi-03.png';
+import imgReusoBitPbiIngresoPath from '@site/static/img/docs/reuso/reuso-parquet-pbi-03.1.png';
+import imgReusoBitPbiTransform from '@site/static/img/docs/reuso/reuso-parquet-pbi-04.png';
+
+A continuación, se presentan ejemplos de cómo reutilizar los datos de la bitácora de operaciones (Parquet)
+en conjunto con los archivos de dimensiones aeronáuticas (CSV) desde la URL de publicación o desde un archivo
+descargado. Esto, en diversos lenguajes de programación o aplicaciones de inteligencia de negocios.
+
+## ¿Qué  es el Formato Parquet?
+
+La bitácora de operaciones se encuentra disponible en
+[Parquet](https://parquet.apache.org/docs/overview/motivation/),
+el cual es un formato de
+[almacenamiento de datos orientado a columnas](https://en.wikipedia.org/wiki/Apache_Parquet),
+optimizado para el análisis de datos.
+Este formato permite trabajar con grandes volúmenes de datos, utilizando un esquema de
+compresión eficiente reduciendo el espacio de almacenamiento requerido. Son por estos motivos
+que se escogió este formato para la publicación de la bitácora de operaciones.
+
+## ¿Cómo Reutilizar los Datos?
+
+Dependiendo del lenguaje de programación o aplicación de inteligencia de negocios
+que se utilice, los archivos, en Parquet o CSV, pueden ser descargado o utilizado directamente
+desde la URL de publicación.
+
+### Descarga de Archivos
+
+Los archivos de bitácora de operaciones y dimensiones aeronáuticas pueden
+ser descargados directamente desde el sitio web de
+[Datos.Gob](https://datos.gob.cl/dataset/operaciones-aeronaves/resource/5bc8842e-d95a-4f8f-8ec6-acfbe700258a)
+presionando en "Descargar":
+
+<figure style={{ textAlign:"center" }}>
+  <img src={imgReusoBitacora} alt="Descargar Archivo Parquet" />
+</figure>
+
+Por otra parte, la URL de publicación se encuentra disponible en el mismo sitio web, donde se puede
+copiar el enlace:
+
+<figure style={{ textAlign:"center" }}>
+  <img src={imgReusoBitUrl} alt="Url en sitio Datos.Gob" />
+</figure>
+
+
+### Herramientas para Reutilizar los Datos
+
+A continuación, se presentan ejemplos de cómo reutilizar los datos de la bitácora de operaciones
+en diversos lenguajes de programación o aplicaciones de inteligencia de negocios.
+
+
+<Tabs>
+
+  <TabItem value="excel" label="Excel">
+   **🚧 En construcción**.
+  </TabItem>
+
+  <TabItem value="powerbi" label="PowerBI">
+    
+    Para cargar el archivo Parquet en PowerBI, se debe seleccionar el botón
+    "Obtener Datos":
+
+    <figure style={{ textAlign:"center", width:"70%" }}>
+      <img src={imgReusoBitPbiBanner} alt="PowerBI" />
+    </figure>
+
+    Luego seleccionar la opción "Parquet":
+    <figure style={{ textAlign:"center", width:"70%" }}>
+      <img src={imgReusoBitPbiOpciones} alt="PowerBI" />
+    </figure>
+
+    PowerBI permite cargar un archivo Parquet desde la URL de publicación o desde
+    una ruta local. Para cargar el archivo desde la URL de publicación
+    se debe ingresar la URL en el campo correspondiente:
+    
+    <figure style={{ textAlign:"center", width:"70%" }}>
+      <img src={imgReusoBitPbiIngresoUrl} alt="PowerBI" />
+    </figure>
+    :::warning
+    Por motivos de seguridad el servidor de datos de la URL de publicación puede
+    requerir más de un intento de carga.
+    :::
+
+    Para cargar el archivo desde la ruta local:
+    <figure style={{ textAlign:"center", width:"70%" }}>
+      <img src={imgReusoBitPbiIngresoPath} alt="PowerBI" />
+    </figure>
+
+    Luego, se debería observar el dataset de bitácora disponible
+    para ser cargado o transformado en PowerQuery:
+    <figure style={{ textAlign:"center", width:"70%" }}>
+      <img src={imgReusoBitPbiTransform} alt="PowerBI" />
+    </figure>
+
+    PowerBI permite utilizar archivos CSV de la misma forma.
+
+  </TabItem>
+
+  <TabItem value="python" label="Python">
+
+    Para cargar el archivo Parquet en Python, se pueden utilizar librerías
+    como [Pandas](https://pandas.pydata.org/), [Polars](https://pola.rs/) o
+    [DuckDB](https://duckdb.org/docs/stable/clients/python/overview.html), entre otras, para lo que
+    se recomienda crear un ambiente virtual primero, por ejemplo, con [`venv`](https://docs.python.org/3/library/venv.html)
+    o [`uv`](https://docs.astral.sh/uv/getting-started/) (este último es la opción recomendada).
+    
+    A continuación, se muestran ejemplos con las librerías de Pandas y Polars.
+
+    <Tabs>
+      <TabItem value="pandas" label="Pandas">
+
+        Para que el código funcione, es necesario instalar las librerías de `pandas` y `pyarrow`
+
+        ```bash
+        pip install pandas pyarrow
+        # o con uv.
+        uv add pandas pyarrow
+        ```
+
+        Luego, se pueden realizar operaciones sobre los datos de la siguiente forma:
+
+        ```python
+        from datetime import datetime
+
+        import pandas as pd
+        import pytz
+
+        URL_DGOB_BITACORA = (
+            "https://datos.gob.cl/dataset/d5fac3ed-01c7-43f0-9dc4-8970566bc059/"
+            "resource/5bc8842e-d95a-4f8f-8ec6-acfbe700258a/download/bitacora-vuelos.parquet"
+        )
+        URL_DGOB_DIM_AEROP = (
+            "https://datos.gob.cl/dataset/7085b6e0-482a-403a-a569-6f6df4f30f82/"
+            "resource/0663a4e0-c224-4ca9-98de-dfa7ec57bdbd/download/dim.aeropuerto.csv"
+        )
+
+        # En caso de no querer leer el archivo completo a memoria, utilizar el argumento "filters"
+        # para optimizar la lectura del parquet.
+        operaciones = pd.read_parquet(
+            URL_DGOB_BITACORA,
+            filters=[("dt_operacion", ">=", datetime(2025,1,1, tzinfo=pytz.UTC))]  # Operaciones del 2025 en adelante.
+        )
+
+        # Leer la dimensión de aeropuerto a
+        dim_aeropuerto = pd.read_csv(URL_DGOB_DIM_AEROP)
+
+        # Para unir la dimensión 
+        operaciones = operaciones.merge(dim_aeropuerto, left_on="aeropuerto_oaci", right_on="oaci")
+
+        # Contar operaciones por aeropuerto.
+        (
+            operaciones["aeropuerto_oaci"]
+                .groupby([operaciones["aeropuerto_oaci"], operaciones["nombre_corto"]])
+                .count()
+                .sort_values(ascending=False)
+        )
+        ```
+      </TabItem>
+
+      <TabItem value="polars" label="Polars">
+
+        Para que el código funcione, es necesario instalar las librerías de `polars` y `pytz`
+
+        ```bash
+        pip install polars pytz
+        # o con uv.
+        uv add polars pytz
+        ```
+
+        Luego, se pueden realizar operaciones sobre los datos de la siguiente forma:
+
+        ```python
+        from datetime import datetime
+
+        import polars as pl
+        import pytz
+
+        URL_DGOB_BITACORA = (
+            "https://datos.gob.cl/dataset/d5fac3ed-01c7-43f0-9dc4-8970566bc059/"
+            "resource/5bc8842e-d95a-4f8f-8ec6-acfbe700258a/download/bitacora-vuelos.parquet"
+        )
+        URL_DGOB_DIM_AEROP = (
+            "https://datos.gob.cl/dataset/7085b6e0-482a-403a-a569-6f6df4f30f82/"
+            "resource/0663a4e0-c224-4ca9-98de-dfa7ec57bdbd/download/dim.aeropuerto.csv"
+        )
+
+        # Definir la operación de carga de los datos con un LazyFrame.
+        lazy_ops = (
+            pl.scan_parquet(URL_DGOB_BITACORA)
+              .filter(
+                  pl.col("dt_operacion").dt.convert_time_zone("UTC") >= datetime(2025, 1, 1, tzinfo=pytz.UTC)
+              )
+        )
+
+        # Dimensiones.
+        dim_aeropuerto = pl.scan_csv(URL_DGOB_DIM_AEROP)
+
+        # Contar operaciones por aeropuerto.
+        (
+            lazy_ops
+              .join(dim_aeropuerto, left_on="aeropuerto_oaci", right_on="oaci", how="inner")
+              .group_by(["aeropuerto_oaci", "nombre_corto"])
+              .agg(pl.len().alias("n_operaciones"))
+              .sort("n_operaciones", descending=True)
+        ).collect()
+        ```
+      </TabItem>
+
+    </Tabs>
+
+  </TabItem>
+
+  <TabItem value="sql" label="SQL">
+
+    Utilizando [DuckDB](https://duckdb.org/docs/stable/), es posible trabajar los datos
+    directamente desde la URL a través de SQL.
+    Teniendo instalado este programa, en conjunto con una aplicación de análisis de datos como
+    [JupyterLab](https://github.com/jupyterlab/jupyterlab) o [DBeaver](https://dbeaver.io/)
+    se puede manipular el archivo.
+
+    A continuación se presenta un ejemplo de cómo cargar el archivo Parquet en conjunto con los
+    archivos de dimensiones aeronáuticas (CSV) desde la URL de publicación:
+
+    ```sql
+    CREATE OR REPLACE TABLE main.bitacora_dgac AS
+    FROM 
+        'https://datos.gob.cl/dataset/d5fac3ed-01c7-43f0-9dc4-8970566bc059/resource/5bc8842e-d95a-4f8f-8ec6-acfbe700258a/download/bitacora-vuelos.parquet' bd
+        -- Opcion alternativa desde una ruta en el computador.
+        -- 'C:\ruta\al\archivo\bitacora-vuelos.parquet'
+    WHERE
+        bd.dt_operacion >= TIMESTAMP '2025-01-01'  -- Opcional
+    ;
+    CREATE OR REPLACE TABLE main.dim_aeropuerto AS
+    FROM 
+        'https://datos.gob.cl/dataset/7085b6e0-482a-403a-a569-6f6df4f30f82/resource/0663a4e0-c224-4ca9-98de-dfa7ec57bdbd/download/dim.aeropuerto.csv'
+    ;
+    CREATE OR REPLACE TABLE main.dim_aerolinea AS
+    FROM 
+        'https://datos.gob.cl/dataset/7085b6e0-482a-403a-a569-6f6df4f30f82/resource/4d3c30d3-a7e1-40ef-9ec3-1af6a7b5164c/download/dim.aerolinea.csv'
+    ;
+    CREATE OR REPLACE TABLE main.dim_actividad AS
+    FROM 
+        'https://datos.gob.cl/dataset/7085b6e0-482a-403a-a569-6f6df4f30f82/resource/ca67dae0-8b11-49a5-b2d4-8cca5bc2ca4b/download/dim.actividad_dgac.csv'
+    ;
+    ```
+
+    Luego, es posible unir todas las tablas de la siguiente forma:
+
+    ```sql
+    SELECT
+        bd.*
+        ,da.descripcion    AS actividad
+        ,dp.nombre_corto   AS aeropuerto_desc
+        ,dpod.nombre_corto AS aeropuerto_orig_dest_desc
+        ,dl.nombre         AS nombre_aerolinea
+    FROM
+        main.bitacora_dgac            bd
+        JOIN main.dim_actividad       da   ON da.codigo = bd.actividad_cod
+        LEFT JOIN main.dim_aeropuerto dp   ON dp.oaci   = bd.aeropuerto_oaci
+        LEFT JOIN main.dim_aerolinea  dl   ON dl.oaci   = bd.aerolinea_dgac
+        LEFT JOIN main.dim_aeropuerto dpod ON dpod.oaci = bd.aeropuerto_dgac_orig_dest
+    ORDER BY
+        bd.dt_operacion
+    LIMIT 10
+    ;
+    ```
+
+  </TabItem>
+
+  <TabItem value="rlang" label="R">
+    Es recomendado tener instalado [`renv`](https://rstudio.github.io/renv/) para crear un ambiente
+    virtual en R. Luego, para instalar las librerías necesarias, se puede utilizar el siguiente código:
+
+    ```r
+    install.packages(c("lubridate", "tidyverse", "arrow"))
+    ```
+
+    Finalmente, teniendo las librerías instaladas, se pueden realizar
+    operaciones sobre los datos de la siguiente forma:
+
+    ```r
+    # Ruta a archivo parquet. Cambiar!
+    PATH_DGOB_BITACORA <- "path/a/bitacora-vuelos.parquet"
+    URL_DGOB_DIM_AEROP <- paste0(
+      "https://datos.gob.cl/dataset/7085b6e0-482a-403a-a569-6f6df4f30f82/",
+      "resource/0663a4e0-c224-4ca9-98de-dfa7ec57bdbd/download/dim.aeropuerto.csv"
+    )
+
+    # Lectura del archivo parquet desde una ruta.
+    operaciones <- arrow::open_dataset(PATH_DGOB_BITACORA) |>
+      dplyr::filter(dt_operacion >= as.POSIXct("2025-01-01", tz = "UTC")) |>
+      dplyr::collect()
+
+    # Dimensión de aeropuerto.
+    dim_aeropuerto <- readr::read_csv(URL_DGOB_DIM_AEROP)
+
+    # Joining de bitacora con dimensión de aeropuertos
+    operaciones <- merge(operaciones, dim_aeropuerto, by.x = "aeropuerto_oaci", by.y = "oaci")
+
+    # Counting operations by airport and sorting
+    operaciones |>
+      dplyr::group_by(aeropuerto_oaci, nombre_corto) |>
+      dplyr::summarise(count = dplyr::n(), .groups = "drop") |>
+      dplyr::arrange(desc(count))
+    ```
+  </TabItem>
+
+</Tabs>
+
