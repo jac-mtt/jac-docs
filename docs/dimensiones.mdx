@@ -3,10 +3,10 @@ title: Dimensiones
 sidebar_position: 3
 ---
 
-import CsvDocTable from '@site/src/components/CsvDocTable';
-import DimAeropuertoCsv from '!!raw-loader!@site/docs/docs_data/dim_aeropuerto.csv';
-import DimAerolineaCsv from '!!raw-loader!@site/docs/docs_data/dim_aerolinea.csv';
-import DimActividadCsv from '!!raw-loader!@site/docs/docs_data/dim_actividad.csv';
+import CsvDocTable       from '@site/src/components/CsvDocTable';
+import DimAeropuertoCsv  from '!!raw-loader!@site/docs/docs_data/dim_aeropuerto.csv';
+import DimAerolineaCsv   from '!!raw-loader!@site/docs/docs_data/dim_aerolinea.csv';
+import DimActividadCsv   from '!!raw-loader!@site/docs/docs_data/dim_actividad.csv';
 import ImgImportCsvExcel from '@site/static/img/excel-import-csv.png';
 
 # Dimensiones de las Series de Datos
@@ -50,7 +50,6 @@ erDiagram
     dim_aerolinea ||--o{ bitacora : "aerolinea_dgac"
     dim_actividad ||--|{ bitacora : "cod_actividad"
     dim_aeropuerto ||--|{ operaciones_aeropuerto : "aeropuerto_oaci"
-
 ```
 Se omite el resto de las columnas de las tablas para simplificar el diagrama.
 

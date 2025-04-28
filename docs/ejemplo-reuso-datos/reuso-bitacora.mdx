@@ -5,14 +5,22 @@ sidebar_position: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import imgReusoBitacora from '@site/static/img/docs/reuso/reuso-parquet-01.png';
-import imgReusoBitUrl from '@site/static/img/docs/reuso/reuso-parquet-02.png';
+import imgReusoBitacora           from '@site/static/img/docs/reuso/reuso-parquet-01.png';
+import imgReusoBitUrl             from '@site/static/img/docs/reuso/reuso-parquet-02.png';
+import imgReusoBitParquetViewer   from '@site/static/img/docs/reuso/reuso-parquet-03-parquet-viewer.png';
 
-import imgReusoBitPbiBanner from '@site/static/img/docs/reuso/reuso-parquet-pbi-01.png';
-import imgReusoBitPbiOpciones from '@site/static/img/docs/reuso/reuso-parquet-pbi-02.png';
-import imgReusoBitPbiIngresoUrl from '@site/static/img/docs/reuso/reuso-parquet-pbi-03.png';
-import imgReusoBitPbiIngresoPath from '@site/static/img/docs/reuso/reuso-parquet-pbi-03.1.png';
-import imgReusoBitPbiTransform from '@site/static/img/docs/reuso/reuso-parquet-pbi-04.png';
+import imgReusoBitPbiExportData   from '@site/static/img/docs/reuso/reuso-parquet-pbi-06-export-data.png';
+import imgReusoBitPbiCopyData     from '@site/static/img/docs/reuso/reuso-parquet-pbi-07-copy-data.png';
+import imgReusoBitPbiBanner       from '@site/static/img/docs/reuso/reuso-parquet-pbi-01.png';
+import imgReusoBitPbiOpciones     from '@site/static/img/docs/reuso/reuso-parquet-pbi-02.png';
+import imgReusoBitPbiIngresoUrl   from '@site/static/img/docs/reuso/reuso-parquet-pbi-03.png';
+import imgReusoBitPbiIngresoPath  from '@site/static/img/docs/reuso/reuso-parquet-pbi-03.1.png';
+import imgReusoBitPbiTransform    from '@site/static/img/docs/reuso/reuso-parquet-pbi-04.png';
+import imgReusoBitPbiTransformDim from '@site/static/img/docs/reuso/reuso-parquet-pbi-05-web-csv-pre-transform.png';
+import imgReusoBitPbiCalculo      from '@site/static/img/docs/reuso/reuso-parquet-pbi-08-cuenta-aeropuertos.png';
+import imgReusoBitPbiRelacion     from '@site/static/img/docs/reuso/reuso-parquet-pbi-09-relacion.png';
+
+import imgImportCsvExcel          from '@site/static/img/excel-import-csv.png';
 
 A continuación, se presentan ejemplos de cómo reutilizar los datos de la bitácora de operaciones (Parquet)
 en conjunto con los archivos de dimensiones aeronáuticas (CSV) desde la URL de publicación o desde un archivo
@@ -27,13 +35,15 @@ el cual es un formato de
 optimizado para el análisis de datos.
 Este formato permite trabajar con grandes volúmenes de datos, utilizando un esquema de
 compresión eficiente reduciendo el espacio de almacenamiento requerido. Son por estos motivos
-que se escogió este formato para la publicación de la bitácora de operaciones.
+que se escogió Parquet para la publicación de la bitácora de operaciones.
 
 ## ¿Cómo Reutilizar los Datos?
 
 Dependiendo del lenguaje de programación o aplicación de inteligencia de negocios
 que se utilice, los archivos, en Parquet o CSV, pueden ser descargado o utilizado directamente
 desde la URL de publicación.
+
+A continuación, se describe la forma de descargar y reutilizar los archivos.
 
 ### Descarga de Archivos
 
@@ -52,6 +62,10 @@ copiar el enlace:
 <figure style={{ textAlign:"center" }}>
   <img src={imgReusoBitUrl} alt="Url en sitio Datos.Gob" />
 </figure>
+:::warning
+Por motivos de seguridad, el servidor de datos de la URL de publicación puede
+requerir más de un intento de carga cuando es utilizado mediante un _script_ o aplicación.
+:::
 
 
 ### Herramientas para Reutilizar los Datos
@@ -64,7 +78,69 @@ Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
 <Tabs>
 
   <TabItem value="excel" label="Excel">
-   **🚧 En construcción**.
+
+    :::warning
+    Excel permite un máximo de
+    [1.048.576 filas por hoja](https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3),
+    mientras que el archivo parquet de bitácora (a abril de 2025) contiene más de 10 millones, por lo que
+    se recomienda utilizar un subconjunto de datos o una herramienta diferente de
+    análisis de datos. Por ejemplo PowerBI, Python, SQL, R, entre otras.
+    :::
+   
+    Excel no permite cargar archivos Parquet directamente, sin embargo, existen
+    varias opciones para transformarlos con la finalidad de ser utilizados en la
+    aplicacion de _Office_:
+
+    - Utilizar [Parquet Viewer](https://github.com/mukunku/ParquetViewer) para abrir el archivo Parquet
+      y luego exportar a CSV:
+      <figure style={{ textAlign:"center", width:"80%" }}>
+        <img src={imgReusoBitParquetViewer} alt="PowerBI" />
+      </figure>
+      
+      _ParquetViewer_ permite seleccionar solo un subconjunto de datos, utilizando la sección 
+      de _Filter Query_.
+
+    - La última versión de [DuckDB](https://duckdb.org/docs/stable/guides/file_formats/excel_export.html)
+      permite abrir archivos Parquet y exportarlos Excel.
+      ```sql
+      INSTALL excel;
+      LOAD excel;
+      COPY (
+          FROM 'C:\path\a\bitacora-vuelos.parquet'  -- MacOS y Linux: '/path/a/bitacora-vuelos.parquet'
+          WHERE YEAR(dt_operacion) > 2024
+      ) TO
+          'C:\path\a\resultado\bitacora-vuelos.xslx'
+          WITH (FORMAT xlsx, HEADER true)
+      ;
+      ```
+      Más información sobre como utilizar DuckDB como herramienta de carga y
+      análisis de datos de la bitácora, revisar la pestaña **"SQL"**.
+
+    - PowerBI permite cargar archivos Parquet (ver siguiente pestaña) y exportarlos a CSV
+      presionando el botón "Export Data" en una visualización:
+      <figure style={{ textAlign:"center", width:"40%" }}>
+        <img src={imgReusoBitPbiExportData} alt="PowerBI" />
+      </figure>
+
+      Haciendo click derecho sobre la tabla de datos y seleccionando la opción copiar.
+
+      Finalmente, en la vista de tablas, se puede hacer click derecho sobre los datos
+      y seleccionar la opción "Copiar" valor, columna o tabla completa para luego ser
+      pegada en Excel:
+      <figure style={{ textAlign:"center", width:"50%" }}>
+        <img src={imgReusoBitPbiCopyData} alt="PowerBI" />
+      </figure>
+    
+    - Herramientas de programación como Python, R o SQL permiten cargar archivos
+      Parquet y exportarlos a CSV o excel. Revisar las pestañas correspondientes
+      para más información.
+    
+    Si presenta problemas al abrir el archivo CSV en Excel, se recomienda
+    abrirlo mediante la opción "De texto/CSV" en la pestaña "Datos" de Excel:
+    <figure style={{ textAlign:"center" }}>
+      <img src={imgImportCsvExcel} alt="Importar CSV en Excel" />
+    </figure>
+
   </TabItem>
 
   <TabItem value="powerbi" label="PowerBI">
@@ -82,18 +158,9 @@ Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
     </figure>
 
     PowerBI permite cargar un archivo Parquet desde la URL de publicación o desde
-    una ruta local. Para cargar el archivo desde la URL de publicación
-    se debe ingresar la URL en el campo correspondiente:
-    
-    <figure style={{ textAlign:"center", width:"70%" }}>
-      <img src={imgReusoBitPbiIngresoUrl} alt="PowerBI" />
-    </figure>
-    :::warning
-    Por motivos de seguridad el servidor de datos de la URL de publicación puede
-    requerir más de un intento de carga.
-    :::
+    una ruta local, sin embargo, para archivos de mayor volumen es recomendado descargar
+    el archivo a una ruta local, en este caso [desde el sitio web de Datos.Gob](#descarga-de-archivos):
 
-    Para cargar el archivo desde la ruta local:
     <figure style={{ textAlign:"center", width:"70%" }}>
       <img src={imgReusoBitPbiIngresoPath} alt="PowerBI" />
     </figure>
@@ -104,7 +171,23 @@ Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
       <img src={imgReusoBitPbiTransform} alt="PowerBI" />
     </figure>
 
-    PowerBI permite utilizar archivos CSV de la misma forma.
+    PowerBI permite utilizar archivos CSV de la misma forma,
+    por ejemplo con la dimensión de aeropuertos:
+    <figure style={{ textAlign:"center", width:"70%" }}>
+      <img src={imgReusoBitPbiTransformDim} alt="PowerBI" />
+    </figure>
+
+    Con estas dos tablas es posible generar una relación entre ambas:
+    <figure style={{ textAlign:"center", width:"70%" }}>
+      <img src={imgReusoBitPbiRelacion} alt="PowerBI" />
+    </figure>
+
+
+    Finalmente, se puede calcular la cantidad de operaciones por aeropuerto:
+    <figure style={{ textAlign:"center", width:"70%" }}>
+      <img src={imgReusoBitPbiCalculo} alt="PowerBI" />
+    </figure>
+
 
   </TabItem>
 
@@ -291,7 +374,8 @@ Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
         LEFT JOIN main.dim_aerolinea  dl   ON dl.oaci   = bd.aerolinea_dgac
         LEFT JOIN main.dim_aeropuerto dpod ON dpod.oaci = bd.aeropuerto_dgac_orig_dest
     GROUP BY ALL
-    ORDER BY n_operaciones DESC
+    ORDER BY
+        n_operaciones DESC
     ;
     ```
 
