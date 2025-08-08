@@ -40,6 +40,7 @@ $ npm run start
 Basta con hacer un `git push` a branch `main` para que se actualice la
 documentación mediante GitHub Actions.
 
+#### Deployment Antiguo
 La forma antigua utilizando gh-pages para el hosting:
 
 ```
