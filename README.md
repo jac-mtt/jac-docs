@@ -46,3 +46,10 @@ La forma antigua utilizando gh-pages para el hosting:
 ```
 $ GIT_USER=jac-mtt yarn deploy
 ```
+
+### Importante!
+
+Es de *suma* importancia que se le realice mantención
+a `docusaurus`! Leer documentación de como ir
+actualizando la versión de `node.js` a la ultima `LTS`
+(long term support) y ojalá a la última versión de `docusaurus`.
