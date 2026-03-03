@@ -33,7 +33,7 @@ La bitácora de operaciones se encuentra disponible en
 [almacenamiento de datos orientado a columnas](https://en.wikipedia.org/wiki/Apache_Parquet),
 optimizado para el análisis de datos.
 Este formato permite trabajar con grandes volúmenes de datos, utilizando un esquema de
-compresión eficiente reduciendo el espacio de almacenamiento requerido. Son por estos motivos
+compresión eficiente reduciendo el espacio de almacenamiento requerido. Es por estos motivos
 que se escogió Parquet para la publicación de la bitácora de operaciones.
 
 ## ¿Cómo Reutilizar los Datos?
@@ -88,7 +88,7 @@ Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
    
     Excel no permite cargar archivos Parquet directamente, sin embargo, existen
     varias opciones para transformarlos con la finalidad de ser utilizados en la
-    aplicacion de _Office_:
+    aplicación de _Office_:
 
     - Utilizar [Parquet Viewer](https://github.com/mukunku/ParquetViewer) para abrir el archivo Parquet
       y luego exportar a CSV:
@@ -108,7 +108,7 @@ Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
           FROM 'C:\path\a\bitacora-vuelos.parquet'  -- MacOS y Linux: '/path/a/bitacora-vuelos.parquet'
           WHERE YEAR(dt_operacion) > 2024
       ) TO
-          'C:\path\a\resultado\bitacora-vuelos.xslx'
+          'C:\path\a\resultado\bitacora-vuelos.xlsx'
           WITH (FORMAT xlsx, HEADER true)
       ;
       ```
@@ -235,10 +235,10 @@ Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
             filters=[("dt_operacion", ">=", datetime(2025,1,1, tzinfo=pytz.UTC))]  # Operaciones del 2025 en adelante.
         )
 
-        # Leer la dimensión de aeropuerto a
+        # Leer la dimensión de aeropuerto a un DataFrame
         dim_aeropuerto = pd.read_csv(URL_DGOB_DIM_AEROP)
 
-        # Para unir la dimensión 
+        # Para unir la dimensión con la tabla principal
         operaciones = operaciones.merge(dim_aeropuerto, left_on="aeropuerto_oaci", right_on="oaci")
 
         # Contar operaciones por aeropuerto.
