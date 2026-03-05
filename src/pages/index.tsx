@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -9,25 +9,22 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
-        <Heading as="h1" className="hero__title">
+        <Heading as="h1" className={clsx('hero__title', styles.heroTitle)}>
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
+        <p className={clsx('hero__subtitle', styles.heroSubtitle)}>{siteConfig.tagline}</p>
+        <div className={styles.buttonsGroup}>
           <Link
-            className="button button--secondary button--lg"
+            className={clsx('button button--lg', styles.btnPrimary)}
             to="/docs/category/series-de-datos">
             Ir a Descripción de Datos Abiertos
           </Link>
-        </div>
-        <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
+            className={clsx('button button--lg', styles.btnOutline)}
             to="https://datos.gob.cl/organization/junta_de_aeronautica_civil">
             Ir a Datos.Gob
           </Link>
@@ -35,11 +32,10 @@ function HomepageHeader() {
       </div>
     </header>
   );
-
 }
 
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title="Docs JAC"
