@@ -24,7 +24,7 @@ $ git clone https://github.com/jac-mtt/jac-docs
 Instalar librerías:
 
 ```
-$ npm install
+$ yarn install
 ``` 
 
 ### Local Development
@@ -32,7 +32,7 @@ $ npm install
 Para ejecutar el código en modo de desarrollo:
 
 ```
-$ npm run start
+$ yarn run start
 ```
 
 ### Deployment

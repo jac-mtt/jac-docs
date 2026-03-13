@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -6,6 +8,10 @@
 
 /* You can override the default Infima variables here. */
 :root {
+  /* Typography */
+  --ifm-font-family-base: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-family: 'Merriweather', serif;
+
   /* GOB Official Colors */
   --gob-blue: #0f69b4;
   --gob-red: #eb3c46;
