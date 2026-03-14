@@ -3,19 +3,25 @@ title: KPI Oferta y Demanda
 sidebar_position: 3
 ---
 
-import CsvDocTable from '@site/src/components/CsvDocTable'
-import kpiOfertaDemandaCsv from '!!raw-loader!@site/docs/docs_data/serie-trafico-kpi.csv'
+import CsvDocTable from '@site/src/components/CsvDocTable';
+import kpiOfertaDemandaCsv from '!!raw-loader!@site/docs/docs_data/serie-trafico-kpi.csv';
 
 
 # KPI de la Industria Aérea
 
 La JAC carga los datos relacionados con los principales indicadores
 utilizados por la industria aeronáutica civil para medir el comportamiento
-de la oferta y demanda de pasajeros y carga, princialpente medido el producto
+de la oferta y demanda de pasajeros y carga, principalmente medido el producto
 de estas variables por la cantidad de kilometros recorridos.
 
 Los datos se encuentran en el siguiente
 [enlace de Datos.Gob](https://datos.gob.cl/dataset/operaciones-aeronaves).
 
+:::info
+Solo se publican aquellas empresas que presentan un comportamiento de
+mercado regular que tengan su origen legal en Chile.
+:::
 
+A continuación, una descripción de cada una de las columnas públicadas
+en la tabla:
 <CsvDocTable csvData={kpiOfertaDemandaCsv} />

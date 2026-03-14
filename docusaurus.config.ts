@@ -7,7 +7,6 @@ import type * as Preset from "@docusaurus/preset-classic";
 const NOMBRE_JAC = "Junta de Aeronáutica Civil (JAC)";
 
 const config: Config = {
-  // NOTE: MOD HERE ULALALÁ!!!
   title: "Junta de Aeronáutica Civil",
   tagline: "Documentación",
   favicon: "img/gob-icon.svg",
@@ -110,7 +109,7 @@ const config: Config = {
       style: "dark",
       links: [
         {
-          title: "Docs",
+          title: "Documentación",
           items: [
             {
               label: "Datos Gob",
@@ -119,7 +118,7 @@ const config: Config = {
           ],
         },
         {
-          title: "Community",
+          title: "Comunidad",
           items: [
             {
               label: "LinkedIn",
@@ -132,7 +131,7 @@ const config: Config = {
           items: [
             {
               label: "Sitio Web JAC",
-              to: "https://www.jac.gob.cl/",
+              href: "https://www.jac.gob.cl/",
             },
             /*{ label: 'Blog', to: '/blog', },*/
           ],
