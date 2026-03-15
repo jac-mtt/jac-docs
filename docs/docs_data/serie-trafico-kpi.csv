@@ -1,8 +1,8 @@
 nombre_columna,tipo_dato,descripcion
-month_id,numeric,Identificador del mes en formato YYYYMM.
+month_id,int,Identificador del mes en formato YYYYMM.
 aerolinea_oaci,string,Código OACI de la aerolínea que opera el vuelo.
-inter_dom,string,Indicador de si la operación es internacional (I) o doméstica (D).
-kkm_volados,numeric,Kilómetros volados (en miles o unidad de distancia).
+inter_dom,string,Indica si el KPI corresponde al mercado internacional (I) o doméstico (D).
+kkm_volados,numeric,Kilómetros volados (en miles).
 horas_vuelo,numeric,Total de horas de vuelo realizadas.
 rpk,numeric,Revenue Passenger Kilometers (Pasajeros-kilómetros rentados).
 ask,numeric,Available Seat Kilometers (Asientos-kilómetros disponibles).
