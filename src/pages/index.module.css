@@ -13,6 +13,40 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Subtle diagonal stripe pattern */
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 40px,
+    rgba(255, 255, 255, 0.025) 40px,
+    rgba(255, 255, 255, 0.025) 41px
+  );
+  pointer-events: none;
+}
+
+/* Two concentric rings — bottom-right corner accent */
+.heroBanner::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  right: -80px;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  border: 48px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 80px rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+.heroBanner > :global(.container) {
+  position: relative;
+  z-index: 1;
+}
+
 .heroTitle {
   font-weight: 800;
   margin-bottom: 1rem;
