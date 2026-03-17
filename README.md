@@ -8,7 +8,7 @@ Requisitos y Pasos para modificar la documentación:
 ### Requisitos
 
 Tener instalado [Node.js](https://nodejs.org/) y [Yarn](https://yarnpkg.com/).
-Actualmente se utiliza la versión 22. Revisar documentación de docusaurus para
+Actualmente se utiliza la versión 20. Revisar documentación de docusaurus para
 determinar la versión minima requerida de node y yarn.
 
 ### Instalación para Desarrollo
@@ -34,6 +34,8 @@ Para ejecutar el código en modo de desarrollo:
 ```
 $ yarn run start
 ```
+
+Siempre probar que funcione el sitio antes de subir.
 
 ### Deployment
 
