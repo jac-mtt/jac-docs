@@ -1,0 +1,118 @@
+---
+title: Tráfico Aéreo Mensual
+sidebar_position: 4
+---
+
+import CsvDocTable from '@site/src/components/CsvDocTable';
+import serieTraficoCsv from '!!raw-loader!@site/docs/docs_data/serie-trafico-aereo.csv';
+
+import imgEjLogicaDireccional from '@site/static/img/docs/series-trafico/ejemplo-logica-direccional.png';
+import imgEjLogicaPares from '@site/static/img/docs/series-trafico/ejemplo-logica-pares.png';
+
+# Estadísticas de Tráfico Aéreo
+
+La **Junta de Aeronáutica Civil** publica los datos de tráfico aéreo
+que incluyen el transporte aéreo de pasajeros, carga y correo por origen-destino,
+de cada una de las aerolíneas regulares que realizan servicios en el país
+y desde y hacia el exterior.
+
+## Base de Datos
+
+La base de datos de tráfico aéreo mensual contiene campos de tipo
+temporal, empresarial y geográfico. Sobre este último ámbito, se incluyen
+campos que permiten identificar el origen y destino de los vuelos desde
+una lógica direccional y de pares de ciudades.
+
+### Información Geográfica: Lógica Direccional
+
+Determina el origen y el destino de un vuelo en un único tramo.
+Permite identificar todos los destinos/orígenes para cualquier origen/destino.
+
+### Información Geográfica: Lógica por Pares de Ciudades
+
+Determina el origen y el destino de un vuelo para una ruta determinada,
+la que tiene por convención un único origen y un único destino para su
+presentación. Permite, además de presentar la información de una forma
+más sintética, identificar el tráfico para cualquier ruta. Se incluye
+el campo `OPER_2` para separar el tráfico de llegada y salida,
+siempre con referencia al origen.
+
+:::info
+Para vuelos internacionales, el origen corresponderá siempre al
+aeropuerto chileno. Para vuelos nacionales, el origen se ha determinado
+por criterios de tráfico y geográficos.
+:::
+
+### Ejemplo
+
+A modo de ejemplo, se presentan los vuelos entre Chile y Argentina
+en el año 2021, con ambas lógicas.
+
+**Lógica direccional:**
+
+<figure style={{ textAlign:"center" }}>
+  <img src={imgEjLogicaDireccional} alt="Ejemplo lógica direccional Chile-Argentina 2021" />
+</figure> 
+
+**Lógica por pares de ciudades:**
+
+<figure style={{ textAlign:"center", width:"60%" }}>
+  <img src={imgEjLogicaPares} alt="Ejemplo lógica por pares de ciudades Chile-Argentina 2021" />
+</figure>
+
+### Descripción de los Datos
+
+A continuación, se describen las columnas contenidas en la
+base de datos de tráfico aéreo mensual:
+
+<CsvDocTable csvData={serieTraficoCsv} />
+:::info
+Las columnas terminadas en `_1` corresponden a la lógica direccional, mientras
+que las columnas terminadas en `_2` corresponden a la lógica por pares de ciudades.
+:::
+
+## Fuentes de Información
+
+Los datos de tráfico aéreo se recopilan a través del Sistema COPAE
+(cobro de tasas de los pasajeros embarcados) de la Dirección General
+de Aeronáutica Civil (DGAC), así como directamente de las aerolíneas.
+
+:::note
+Se entenderá por origen-destino lo determinado por la Organización
+de Aviación Civil Internacional (OACI), correspondiente al tramo que
+se recorre sin cambio de avión. Es decir, cuando se utilizan conexiones
+(cambio de avión en uno o más aeropuertos), el tráfico no refleja
+necesariamente los orígenes y destinos efectivos.
+:::
+
+## Reprocesamiento y Revisiones
+
+La elaboración de la base de datos consideró un reprocesamiento de la
+información a contar de enero de 2022. Este reprocesamiento implicó
+una revisión de la serie para el período 2022-2023, obteniendo una
+mayor precisión en las cifras sin cambios significativos desde el punto
+de vista estadístico.
+
+Las revisiones a las cifras se deben a una actualización de la data
+básica y a ajustes metodológicos de menor impacto.
+
+## Actualización de Datos
+
+La base de datos es actualizada alrededor del día 20 de cada mes
+con la información del mes anterior.
+
+## Política de Revisiones
+
+En consistencia con las mejores prácticas estadísticas internacionales,
+la JAC actualiza periódicamente la información contenida en la base de
+datos de estadísticas de tráfico aéreo. Tomando en cuenta la disponibilidad
+y oportunidad de las actualizaciones de la data básica, así como la magnitud
+esperada de las revisiones, se considera suficiente realizar una revisión
+anual de las cifras, la que se incluye en la actualización de la base de
+datos de marzo de cada año.
+
+## Información Técnica de los Archivos
+  
+Por el momento, la base de datos de estadísticas de tráfico aéreo se encuentra
+disponible en formato Excel (`.xlsx`). Se espera que en el futuro se publique en
+formato tabular como `csv` o `parquet`.

@@ -1,0 +1,26 @@
+nombre_columna,tipo_dato,descripcion
+Año,int,Año de la información del registro.
+Mes,int,Mes de la información del registro.
+Cod_Operador,string,Código de operador utilizado por las aerolíneas.
+Operador,string,Nombre del operador.
+Grupo,string,Grupo empresarial al que pertenece el operador.
+ORIG_1,string,Código de origen direccional.
+DEST_1,string,Código de destino direccional.
+ORIG_1_N,string,Nombre de ciudad de origen direccional.
+DEST_1_N,string,Nombre de ciudad de destino direccional.
+ORIG_1_PAIS,string,Nombre de país de origen direccional.
+DEST_1_PAIS,string,Nombre de país de destino direccional.
+ORIG_2,string,Código de origen por ruta.
+DEST_2,string,Código de destino por ruta.
+ORIG_2_N,string,Nombre de ciudad de origen por ruta.
+DEST_2_N,string,Nombre de ciudad de destino por ruta.
+ORIG_2_PAIS,string,Nombre de país de origen por ruta.
+DEST_2_PAIS,string,Nombre de país de destino por ruta.
+OPER_2,string,"Identificador de llegada/salida, con referencia al origen de la ruta."
+NAC,string,Identificador de tipo de tráfico (nacional o internacional).
+PAX_LIB,int,Número de pasajeros libres de pago.
+PASAJEROS,int,Número de pasajeros de pago.
+CAR_LIB,numeric,Carga libre de pago (Kg).
+CARGA_TON,numeric,Carga total (Ton).
+CORREO,numeric,Correo de pago (Kg).
+Distancia,numeric,Distancia lineal entre el origen y el destino.
