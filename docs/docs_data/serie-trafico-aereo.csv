@@ -4,8 +4,8 @@ Mes,int,Mes de la información del registro.
 Cod_Operador,string,Código de operador utilizado por las aerolíneas.
 Operador,string,Nombre del operador.
 Grupo,string,Grupo empresarial al que pertenece el operador.
-ORIG_1,string,Código de origen direccional.
-DEST_1,string,Código de destino direccional.
+ORIG_1,string,Código de origen direccional en formato IATA.
+DEST_1,string,Código de destino direccional en formato IATA.
 ORIG_1_N,string,Nombre de ciudad de origen direccional.
 DEST_1_N,string,Nombre de ciudad de destino direccional.
 ORIG_1_PAIS,string,Nombre de país de origen direccional.
