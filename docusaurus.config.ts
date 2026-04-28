@@ -41,6 +41,13 @@ const config: Config = {
   },
   themes: ["@docusaurus/theme-mermaid"],
 
+
+  // -- # ---------------------------
+  // for the future of the colony
+  future: {
+    v4: true
+  },
+
   presets: [
     [
       "classic",
