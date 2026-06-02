@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+import ExternalButton from '@site/src/components/ExternalButton';
 
 import styles from './index.module.css';
 
@@ -105,17 +106,7 @@ function HomepageHeader() {
   );
 }
 
-function IconExternalLink(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" strokeWidth="2" strokeLinecap="round"
-      strokeLinejoin="round" {...props}>
-      <path d="M15 3h6v6" />
-      <path d="M10 14 21 3" />
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-    </svg>
-  );
-}
+
 
 function HomepageCards() {
   return (
@@ -165,12 +156,10 @@ function DatosGobCallout() {
             plataforma Datos.Gob del Gobierno de Chile.
           </p>
         </div>
-        <Link
-          className={clsx('button button--lg', styles.calloutBtn)}
-          to="https://datos.gob.cl/organization/junta_de_aeronautica_civil">
-          Ir a Datos.Gob
-          <IconExternalLink className={styles.calloutBtnIcon} aria-hidden="true" />
-        </Link>
+        <ExternalButton 
+          label="Ir a Datos.Gob" 
+          url="https://datos.gob.cl/organization/junta_de_aeronautica_civil" 
+        />
       </div>
     </section>
   );

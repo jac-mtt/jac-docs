@@ -8,6 +8,7 @@ import serieTraficoCsv from '!!raw-loader!@site/docs/docs_data/serie-trafico-aer
 
 import imgEjLogicaDireccional from '@site/static/img/docs/series-trafico/ejemplo-logica-direccional.png';
 import imgEjLogicaPares from '@site/static/img/docs/series-trafico/ejemplo-logica-pares.png';
+import ExternalButton, { ExternalButtonGroup } from '@site/src/components/ExternalButton';
 
 # Estadísticas de Tráfico Aéreo
 
@@ -16,7 +17,20 @@ que incluyen el transporte aéreo de pasajeros, carga y correo por origen-destin
 de cada una de las aerolíneas regulares que realizan servicios en el país
 y desde y hacia el exterior.
 
-## Base de Datos
+### Acceso a los Datos
+  
+La base de datos de estadísticas de tráfico aéreo se encuentra publicada en el
+portal de datos abiertos del Estado [Datos.Gob](https://datos.gob.cl/organization/junta_de_aeronautica_civil).
+Actualmente existen dos recursos disponibles:
+
+<ExternalButtonGroup>
+  <ExternalButton label="Tráfico Aéreo Mensual" url="https://datos.gob.cl/dataset/trafico-aereo-mensual/resource/23a54a1b-6234-4bfb-b45b-84fa147dc2ec" />
+  <ExternalButton label="Tráfico Aéreo Mensual Histórico" url="https://datos.gob.cl/dataset/trafico-aereo-mensual/resource/7a9c08ac-c36c-4b3f-b54a-e5a73536208e" />
+</ExternalButtonGroup>
+
+`Tráfico Aéreo Mensual` corresponde a una serie corta de los datos completos para facilitar su procesamiento.
+
+## Descripción de la Base de Datos
 
 La base de datos de tráfico aéreo mensual contiene campos de tipo
 temporal, empresarial y geográfico. Sobre este último ámbito, se incluyen

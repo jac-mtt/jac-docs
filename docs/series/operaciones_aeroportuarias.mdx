@@ -7,6 +7,7 @@ import CsvDocTable from '@site/src/components/CsvDocTable';
 import bitacoraCsv from '!!raw-loader!@site/docs/docs_data/bitacora.csv';
 import opsAeropuertosCsv from '!!raw-loader!@site/docs/docs_data/ops-aeropuertos.csv';
 import ImgImportCsvExcel from '@site/static/img/excel-import-csv.png';
+import ExternalButton, { ExternalButtonGroup } from '@site/src/components/ExternalButton';
 
 # Series de Operaciones Aeroportuarias
 
@@ -17,6 +18,17 @@ corresponde a un resumen de las operaciones de aeronaves en los aeropuertos del 
 
 A continuación, se describen en detalle las variables contenidas en cada una de estas
 series de datos, su oportunidad e información técnica relacionada con el formato de los datos. 
+
+### Acceso a los Datos
+  
+La base de datos de operaciones aeroportuarias se encuentra publicada en el
+portal de datos abiertos del Estado [Datos.Gob](https://datos.gob.cl/organization/junta_de_aeronautica_civil).
+Actualmente existen dos recursos disponibles:
+
+<ExternalButtonGroup>
+  <ExternalButton label="Bitácora de Vuelos" url="https://datos.gob.cl/dataset/operaciones-aeronaves/resource/5bc8842e-d95a-4f8f-8ec6-acfbe700258a" />
+  <ExternalButton label="Operaciones en Aeropuertos" url="https://datos.gob.cl/dataset/operaciones-aeronaves/resource/2b7f3fbd-8be8-45e6-8ef5-64eea097528b" />
+</ExternalButtonGroup>
 
 ## Bitácora de Aeropuertos
 

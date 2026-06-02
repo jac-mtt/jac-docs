@@ -292,27 +292,3 @@
   color: #a0aec0;
 }
 
-.calloutBtn {
-  display: inline-flex !important;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--gob-blue) !important;
-  border-color: var(--gob-blue) !important;
-  color: white !important;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: all 0.2s ease-in-out;
-  flex-shrink: 0;
-}
-
-.calloutBtn:hover {
-  background-color: var(--gob-dark-blue) !important;
-  border-color: var(--gob-dark-blue) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(15, 105, 180, 0.3);
-}
-
-.calloutBtnIcon {
-  width: 16px;
-  height: 16px;
-}
