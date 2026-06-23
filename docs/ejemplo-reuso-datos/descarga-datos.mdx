@@ -3,21 +3,68 @@ title: Descarga y Uso de Datos desde Datos.Gob
 sidebar_position: 1
 ---
 
-### ¿Cómo Reutilizar los Datos de la Plataforma?
+import imgDescargaNormal from '@site/static/img/docs/ejemplo-reuso-datos/datos-gob-descarga-normal.png';
+import imgDescargaApi from '@site/static/img/docs/ejemplo-reuso-datos/datos-gob-descarga-api.png';
+import imgDescargaUrl from '@site/static/img/docs/ejemplo-reuso-datos/datos-gob-descarga-url.png';
+import imgReusoUrl from '@site/static/img/docs/ejemplo-reuso-datos/datos-gob-reuso-url.png';
+import imgImportCsvExcel from '@site/static/img/excel-import-csv.png';
 
-Existen multiples metodos de descarga y uso de datos desde la plataforma
-de Datos.Gob. Estos pueden ser:
-- Descargados directamente desde el dataset.
-- Desde la URL 
+### ¿Cómo Descargo los Datos de la Plataforma?
 
-Dependiendo del lenguaje de programación o aplicación de inteligencia de negocios
-que se utilice, los archivos, en Parquet o CSV, pueden ser descargados desde
-Datos.Gob o utilizados directamente desde la URL de publicación.
+Según el manual de usuario de Datos.Gob, existen dos formas principales para consumir y reutilizar los datos públicos:
 
-A continuación, se describe la forma de descargar y reutilizar los archivos.
+1. **Descarga Manual (Portal Web)**: Accediendo libremente al portal, buscando el conjunto de datos y presionando el
+botón "Descargar" sobre el recurso para obtenerlo en formatos como CSV, Excel o JSON. 
+(Ejemplo: [Bitácora de operaciones](https://datos.gob.cl/dataset/operaciones-aeronaves/resource/5bc8842e-d95a-4f8f-8ec6-acfbe700258a))
 
-### Descarga de archivos desde la Plataforma de Datos Abiertos
+<figure style={{ textAlign:"center" }}>
+  <img src={imgDescargaNormal} alt="Descarga manual en Datos.Gob" />
+</figure>
 
-El archivo de la bitácora de operaciones puede ser descargado desde el sitio web de
-[Datos.Gob](https://datos.gob.cl/dataset/operaciones-aeronaves/resource/5bc8842e-d95a-4f8f-8ec6-acfbe700258a)
-presionando en "Descargar":
+2. **Consumo Automatizado (API CKAN)**: Interactuando directamente con la API para automatizaciones.
+Permite realizar consultas avanzadas (filtrado, límite de resultados, entre otros) al endpoint `datastore_search`
+utilizando el `resource_id` del conjunto de datos. Al presionar en el botón "API de datos" se pueden ver ejemplos de uso.
+
+<figure style={{ textAlign:"center" }}>
+  <img src={imgDescargaApi} alt="Uso de la API en Datos.Gob" />
+</figure>
+
+:::warning
+Por motivos de seguridad, el servidor de datos de la URL de publicación puede
+requerir más de un intento de carga cuando es utilizado mediante un _script_ o aplicación.
+:::
+
+### ¿Cómo Reutilizo los Datos?
+
+#### Utilizando el Archivo Descargado
+
+Una vez descargado el archivo, puede ser ingresado o procesado por la herramienta que el
+usuario escoja:
+- Los archivos CSV pueden ser importados a Excel mediante el importador en la pestaña
+  "Datos" botón "De texto/CSV", como se observa a continuación:
+
+<figure style={{ textAlign:"center" }}>
+  <img src={imgImportCsvExcel} alt="Importar CSV en Excel" />
+</figure>
+
+También es posible hacer doble click en el archivo, sin embargo, esto puede hacer que las
+columnas de texto no se visualicen correctamente.
+
+- Los archivos Parquet aún no pueden ser importados a Excel directamente, por lo tanto
+  es necesario utilizar otro tipo de herramienta. Revisar ejemplos [aquí](./reuso-bitacora.mdx#herramientas-para-reutilizar-los-datos).
+
+#### Utilizando la URL de Datos.Gob
+
+Dependiendo de la herramienta o lenguaje de programación que se utilice, la URL de los datos puede ser consumida directamente sin necesidad de descargar un archivo a tu equipo local.
+
+Para ello, primero debes obtener la dirección del recurso desde la plataforma de Datos.gob (ya sea desde el menú desplegable "Descargar" o haciendo clic derecho sobre el botón del formato deseado y seleccionando "Copiar dirección de enlace"):
+
+<figure style={{ textAlign:"center" }}>
+  <img src={imgDescargaUrl} alt="Copiar URL de descarga en Datos.Gob" />
+</figure>
+
+Luego, puedes utilizar esta URL directamente en tu herramienta de análisis (por ejemplo, en un script de Python, Power BI, Excel o R). De esta manera, tu proyecto siempre leerá la versión más actualizada de los datos directo desde la fuente:
+
+<figure style={{ textAlign:"center" }}>
+  <img src={imgReusoUrl} alt="Reutilizar URL de datos en herramientas" />
+</figure>

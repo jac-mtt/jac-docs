@@ -16,6 +16,14 @@ relacionadas con las dimensiones de los datos que se encargan de
 contextualizar o describir en mayor detalle, columnas de las demás
 series de datos.
 
+## Acceso a los Datos
+
+<ExternalButtonGroup>
+  <ExternalButton label="Dimensión Aeropuerto" url="https://datos.gob.cl/dataset/dimensiones-aeronauticas/resource/0663a4e0-c224-4ca9-98de-dfa7ec57bdbd" />
+  <ExternalButton label="Dimensión Aerolínea" url="https://datos.gob.cl/dataset/dimensiones-aeronauticas/resource/4d3c30d3-a7e1-40ef-9ec3-1af6a7b5164c" />
+  <ExternalButton label="Dimensión Actividad" url="https://datos.gob.cl/dataset/dimensiones-aeronauticas/resource/ca67dae0-8b11-49a5-b2d4-8cca5bc2ca4b" />
+</ExternalButtonGroup>
+
 A continuación, el diagrama ([ER](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model#Cardinalities))
 muestra las relaciones entre estas dimensiones y las tablas de series:
 
@@ -74,10 +82,6 @@ proviene de la [DGAC](https://www.dgac.gob.cl/)/[IFIS](https://aipchile.dgac.gob
 [DAP](https://www.mop.gob.cl/category/direccion-de-aeropuertos/)
 y [OurAirports](https://ourairports.com/).
 
-<ExternalButtonGroup>
-  <ExternalButton label="Dimensión Aeropuerto" url="https://datos.gob.cl/dataset/dimensiones-aeronauticas/resource/0663a4e0-c224-4ca9-98de-dfa7ec57bdbd" />
-</ExternalButtonGroup>
-
 <CsvDocTable csvData={DimAeropuertoCsv} />
 
 
@@ -85,10 +89,6 @@ y [OurAirports](https://ourairports.com/).
 
 Contiene la descripción de las aerolíneas que operan
 (u operaron en algún momento) en Chile.
-
-<ExternalButtonGroup>
-  <ExternalButton label="Dimensión Aerolínea" url="https://datos.gob.cl/dataset/dimensiones-aeronauticas/resource/4d3c30d3-a7e1-40ef-9ec3-1af6a7b5164c" />
-</ExternalButtonGroup>
 
 <CsvDocTable csvData={DimAerolineaCsv} />
 
@@ -98,10 +98,6 @@ Presenta las actividades definidas por la DGAC que
 describen el motivo de la operación de una aeronave.
 El motivo es informado en cada registro de la
 bitácora de vuelos de la DGAC.
-
-<ExternalButtonGroup>
-  <ExternalButton label="Dimensión Actividad" url="https://datos.gob.cl/dataset/dimensiones-aeronauticas/resource/ca67dae0-8b11-49a5-b2d4-8cca5bc2ca4b" />
-</ExternalButtonGroup>
 
 <CsvDocTable csvData={DimActividadCsv} />
 

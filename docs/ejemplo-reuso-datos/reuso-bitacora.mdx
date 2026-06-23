@@ -1,5 +1,5 @@
 ---
-title: Reuso de Bitácora y Dimensiones Aeronáuticas
+title: Bitácora y Dimensiones Aeronáuticas
 sidebar_position: 2
 ---
 import Tabs from '@theme/Tabs';
@@ -40,31 +40,7 @@ que se escogió Parquet para la publicación de la bitácora de operaciones.
 
 Dependiendo del lenguaje de programación o aplicación de inteligencia de negocios
 que se utilice, los archivos, en Parquet o CSV, pueden ser descargados o
-utilizados directamente desde la URL de publicación.
-
-A continuación, se describe la forma de descargar y reutilizar los archivos.
-
-### Descarga de Archivos
-
-Los archivos de bitácora de operaciones y dimensiones aeronáuticas pueden
-ser descargados directamente desde el sitio web de
-[Datos.Gob](https://datos.gob.cl/dataset/operaciones-aeronaves/resource/5bc8842e-d95a-4f8f-8ec6-acfbe700258a)
-presionando en "Descargar":
-
-<figure style={{ textAlign:"center" }}>
-  <img src={imgReusoBitacora} alt="Descargar Archivo Parquet" />
-</figure>
-
-Por otra parte, la URL de publicación se encuentra disponible en el mismo sitio web, donde se puede
-copiar el enlace:
-
-<figure style={{ textAlign:"center" }}>
-  <img src={imgReusoBitUrl} alt="Url en sitio Datos.Gob" />
-</figure>
-:::warning
-Por motivos de seguridad, el servidor de datos de la URL de publicación puede
-requerir más de un intento de carga cuando es utilizado mediante un _script_ o aplicación.
-:::
+utilizados directamente desde la URL de publicación. Más información [aquí](./descarga-datos.mdx).
 
 
 ### Herramientas para Reutilizar los Datos
@@ -90,15 +66,21 @@ Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
     varias opciones para transformarlos con la finalidad de ser utilizados en la
     aplicación de _Office_:
 
-    - Utilizar [Parquet Viewer](https://github.com/mukunku/ParquetViewer) para abrir el archivo Parquet
-      y luego exportar a CSV:
-      <figure style={{ textAlign:"center", width:"80%" }}>
-        <img src={imgReusoBitParquetViewer} alt="PowerBI" />
+    - PowerBI permite cargar archivos Parquet (ver siguiente pestaña) y exportarlos a CSV
+      presionando el botón "Export Data" en una visualización:
+      <figure style={{ textAlign:"center", width:"40%" }}>
+        <img src={imgReusoBitPbiExportData} alt="PowerBI" />
+      </figure>
+
+      Haciendo click derecho sobre la tabla de datos y seleccionando la opción copiar.
+
+      Finalmente, en la vista de tablas, se puede hacer click derecho sobre los datos
+      y seleccionar la opción "Copiar" valor, columna o tabla completa para luego ser
+      pegada en Excel:
+      <figure style={{ textAlign:"center", width:"50%" }}>
+        <img src={imgReusoBitPbiCopyData} alt="PowerBI" />
       </figure>
       
-      _ParquetViewer_ permite seleccionar solo un subconjunto de datos, utilizando la sección 
-      de _Filter Query_.
-
     - La última versión de [DuckDB](https://duckdb.org/docs/stable/guides/file_formats/excel_export.html)
       permite abrir archivos Parquet y exportarlos Excel.
       ```sql
@@ -115,20 +97,14 @@ Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
       Más información sobre como utilizar DuckDB como herramienta de carga y
       análisis de datos de la bitácora, revisar la pestaña **"SQL"**.
 
-    - PowerBI permite cargar archivos Parquet (ver siguiente pestaña) y exportarlos a CSV
-      presionando el botón "Export Data" en una visualización:
-      <figure style={{ textAlign:"center", width:"40%" }}>
-        <img src={imgReusoBitPbiExportData} alt="PowerBI" />
+    - Utilizar [Parquet Viewer](https://github.com/mukunku/ParquetViewer) para abrir el archivo Parquet
+      y luego exportar a CSV:
+      <figure style={{ textAlign:"center", width:"80%" }}>
+        <img src={imgReusoBitParquetViewer} alt="PowerBI" />
       </figure>
-
-      Haciendo click derecho sobre la tabla de datos y seleccionando la opción copiar.
-
-      Finalmente, en la vista de tablas, se puede hacer click derecho sobre los datos
-      y seleccionar la opción "Copiar" valor, columna o tabla completa para luego ser
-      pegada en Excel:
-      <figure style={{ textAlign:"center", width:"50%" }}>
-        <img src={imgReusoBitPbiCopyData} alt="PowerBI" />
-      </figure>
+      
+      _ParquetViewer_ permite seleccionar solo un subconjunto de datos, utilizando la sección 
+      de _Filter Query_.
     
     - Herramientas de programación como Python, R o SQL permiten cargar archivos
       Parquet y exportarlos a CSV o Excel. Revisar las pestañas correspondientes
@@ -158,7 +134,7 @@ Se asume un conocimiento básico de cada uno de los lenguajes o aplicaciones.
 
     PowerBI permite cargar un archivo Parquet desde la URL de publicación o desde
     una ruta local, sin embargo, para archivos de mayor volumen es recomendado descargar
-    el archivo a una ruta local, en este caso [desde el sitio web de Datos.Gob](#descarga-de-archivos):
+    el archivo a una ruta local, en este caso [desde el sitio web de Datos.Gob](docs/ejemplo-reuso-datos/descarga-datos.mdx#cómo-reutilizo-los-datos):
 
     <figure style={{ textAlign:"center", width:"70%" }}>
       <img src={imgReusoBitPbiIngresoPath} alt="PowerBI" />

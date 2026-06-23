@@ -125,6 +125,30 @@ datos de marzo de cada año.
 
 ## Información Técnica de los Archivos
   
-Por el momento, la base de datos de estadísticas de tráfico aéreo se encuentra
-disponible en formato Excel (`.xlsx`). Se espera que en el futuro se publique en
-formato tabular como `csv` o `parquet`.
+La base de datos de estadísticas de tráfico aéreo se encuentra
+disponible en formato CSV (`.csv`) con `;` como el separador.
+
+En caso de reutilizar los datos en Excel, estos deben ser cargados
+idealmente utilizando el importador de datos como se
+detalla [aquí](docs/ejemplo-reuso-datos/descarga-datos.mdx#cómo-reutilizo-los-datos).
+
+:::tip
+También puede descargar directamente un archivo Excel con la conexión
+preestablecida a la serie de Datos.Gob "Tráfico Aéreo Mensual", que
+contiene las columnas descritas más arriba:
+
+<DownloadButton
+  label="Descargar serie en Excel"
+  file="/files/trafico-aereo-dgob.xlsx"
+  filename="trafico-aereo-dgob.xlsx"
+  meta="XLSX · 2,6 MB"
+/>
+:::
+
+:::info
+Este archivo es una copia de referencia (datos desde enero de 2022 hasta mayo de
+2026). La base se actualiza mensualmente, por lo que para obtener la versión más
+reciente se recomienda descargarla desde
+[Datos.Gob](https://datos.gob.cl/organization/junta_de_aeronautica_civil) o
+presionar el botón "Actualizar Datos" en la sección de "Datos" de Excel.
+:::

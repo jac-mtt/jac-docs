@@ -1,0 +1,49 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  margin: 1rem 0;
+}
+
+.downloadBtn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.65rem;
+  /* Menos padding a la izquierda para que el ícono quede más cerca del borde. */
+  padding-left: 1rem !important;
+  background-color: var(--gob-dark-blue) !important;
+  border-color: var(--gob-dark-blue) !important;
+  color: #fff !important;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.downloadBtn:hover {
+  /* --gob-dark-blue, un tono más oscuro. */
+  background-color: #24267a !important;
+  border-color: #24267a !important;
+  color: #fff !important;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(46, 49, 146, 0.3);
+}
+
+/* Foco visible accesible, en línea con las pautas USWDS. */
+.downloadBtn:focus-visible {
+  outline: 3px solid var(--gob-yellow);
+  outline-offset: 2px;
+}
+
+.downloadBtnIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.downloadBtnMeta {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-700);
+}

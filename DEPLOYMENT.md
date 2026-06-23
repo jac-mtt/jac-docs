@@ -144,13 +144,24 @@ desplegar:
   propia URL de versión (visible en los logs del build y en la pestaña *Versions* del
   Worker). Comparte esa URL con tus pares para revisar antes de hacer *merge* a `main`.
 
-### Dominio propio (opcional)
+### Personalizar la URL del sitio (opcional)
 
-Como `rosebush.garden` ya está en Cloudflare:
+La URL por defecto es `<worker>.<subdominio-de-cuenta>.workers.dev` (ej:
+`jac-docs.benjabuys.workers.dev`). El primer segmento (`jac-docs`) es el nombre del
+Worker; el segundo es el **subdominio de la cuenta**, común a *todos* tus Workers.
 
-1. *Worker* → *Settings* → *Domains & Routes* → *Add* → *Custom domain* →
-   `jac-docs.rosebush.garden`. El DNS se configura automáticamente.
-2. Actualiza la variable `SITE_URL` a `https://jac-docs.rosebush.garden`.
+**a) Renombrar el subdominio de la cuenta** — afecta a todos los Workers y también a las
+URLs de *preview*. *Workers & Pages* → panel *Account details* (o *Settings*) →
+*Subdomain* → cámbialo a algo neutro (ej: `jac-mtt` → `jac-docs.jac-mtt.workers.dev`).
+Recomendado si `jac-docs` es tu único Worker. El nombre debe estar libre a nivel global.
+
+**b) Agregar un dominio propio al Worker** — solo cambia la URL de producción del Worker,
+no las previews. Como `rosiers.cl` ya está en Cloudflare: *Worker* → *Settings* →
+*Domains & Routes* → *Add* → *Custom domain* → `jac-docs.rosiers.cl`. El DNS se configura
+solo. Si quieres, actualiza `SITE_URL` a `https://jac-docs.rosiers.cl`.
+
+> Las URLs de *preview* de cada PR siempre van en `*.workers.dev` (subdominio de cuenta).
+> Para ocultar el nombre también ahí, usa la opción (a).
 
 ### Notas y solución de problemas
 

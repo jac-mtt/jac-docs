@@ -4,6 +4,7 @@ import MDXComponents from '@theme-original/MDXComponents';
 
 import CsvDocTable from '@site/src/components/CsvDocTable';
 import ExternalButton, { ExternalButtonGroup } from '@site/src/components/ExternalButton';
+import DownloadButton from '@site/src/components/DownloadButton';
 
 export default {
   // Re-use the default mapping
@@ -12,4 +13,5 @@ export default {
   CsvDocTable,
   ExternalButton,
   ExternalButtonGroup,
+  DownloadButton,
 };
