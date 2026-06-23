@@ -11,11 +11,15 @@ const config: Config = {
   tagline: "Documentación",
   favicon: "img/gob-icon.svg",
 
-  // Set the production url of your site here
-  url: "https://jac-mtt.github.io",
+  // Set the production url of your site here.
+  // Defaults target GitHub Pages; the staging build (Cloudflare Pages) overrides
+  // these via the SITE_URL / SITE_BASE_URL environment variables, since it is
+  // served from a domain root instead of the /jac-docs/ subpath.
+  // `||` (no `??`) para que una variable vacía caiga también al valor por defecto.
+  url: process.env.SITE_URL || "https://jac-mtt.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/jac-docs/",
+  baseUrl: process.env.SITE_BASE_URL || "/jac-docs/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

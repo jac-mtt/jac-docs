@@ -1,0 +1,16 @@
+{
+  // Configuración para desplegar el sitio ESTÁTICO en Cloudflare Workers
+  // (Workers Builds + Static Assets). Solo la usa Cloudflare: ni GitHub Pages
+  // ni el desarrollo local (`yarn start`) la tienen en cuenta.
+  //
+  // El comando de build (`yarn build`) genera la carpeta `build/` con Docusaurus,
+  // y el comando de deploy (`npx wrangler deploy`) sube esa carpeta como los
+  // assets de un Worker "solo-assets" (sin script `main`).
+  "name": "jac-docs",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./build",
+    // Sirve el 404.html que genera Docusaurus para rutas inexistentes.
+    "not_found_handling": "404-page"
+  }
+}
